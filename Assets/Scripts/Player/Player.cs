@@ -27,7 +27,7 @@ public class Player : MonoBehaviour
         if (m_agent.isActiveAndEnabled == true && m_agent.isOnNavMesh == true)
         {
             text.text = "<color=green>AGENT ACTIVE & ON MESH</color>";
-            if (m_agent.isStopped == true)
+            if (m_agent.remainingDistance <= m_agent.stoppingDistance && m_agent.remainingDistance != Mathf.Infinity && m_agent.remainingDistance != 0 && m_agent.pathPending == false)
             {
                 //animate the player to walk/run
                 _animator.SetFloat("Movement", 0);

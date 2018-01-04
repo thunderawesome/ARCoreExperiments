@@ -72,7 +72,7 @@ namespace GoogleARCore.HelloAR
         public void Awake()
         {
             m_Mesh = GetComponent<MeshFilter>().mesh;
-            m_MeshRenderer = GetComponent<UnityEngine.MeshRenderer>();
+            m_MeshRenderer = GetComponent<MeshRenderer>();
             m_meshCollider = gameObject.AddComponent<MeshCollider>();
         }
 
