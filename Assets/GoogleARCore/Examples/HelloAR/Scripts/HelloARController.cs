@@ -77,6 +77,10 @@ namespace GoogleARCore.HelloAR
         /// </summary>
         private bool m_hasCharacterBeenSpawned = false;
 
+        /// <summary>
+        /// Anchor point used by the player.
+        /// </summary>
+        public Anchor anchor;
 
         /// <summary>
         /// Unity built-in method (called before any other method).
@@ -118,6 +122,8 @@ namespace GoogleARCore.HelloAR
                 GameObject planeObject = Instantiate(TrackedPlanePrefab, Vector3.zero, Quaternion.identity,
                     transform);
                 planeObject.GetComponent<TrackedPlaneVisualizer>().Initialize(m_NewPlanes[i]);
+
+                
             }
 
             // Disable the snackbar UI when no planes are valid.
@@ -152,7 +158,7 @@ namespace GoogleARCore.HelloAR
 
                 m_hasCharacterBeenSpawned = true;
             }
-        }  
+        }
 
         /// <summary>
         /// Quit the application if there was a connection error for the ARCore session.
