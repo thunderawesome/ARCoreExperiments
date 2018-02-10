@@ -243,6 +243,7 @@ MonoBehaviour:
   AndyAndroidPrefab: {fileID: 1781371685487244, guid: 78f63669bcef40743885dbb1b20f7b94,
     type: 2}
   SearchingForPlaneUI: {fileID: 1133631540}
+  anchor: {fileID: 0}
 --- !u!114 &627916104
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -254,6 +255,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b897843af9d86b346af343f441e2a34c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  areaCheckingLayerMask:
+    serializedVersion: 2
+    m_Bits: 256
   objects:
   - {fileID: 1600082275522902, guid: eeb16eacf940ccd49b8641686340e18f, type: 2}
   - {fileID: 1600082275522902, guid: eeb16eacf940ccd49b8641686340e18f, type: 2}
