@@ -31,6 +31,11 @@ namespace GoogleARCore.HelloAR
     public class HelloARController : MonoBehaviour
     {
         /// <summary>
+        /// Instance of this script.
+        /// </summary>
+        public static HelloARController Instance;
+
+        /// <summary>
         /// The first-person camera being used to render the passthrough camera image (i.e. AR background).
         /// </summary>
         public Camera FirstPersonCamera;
@@ -71,6 +76,15 @@ namespace GoogleARCore.HelloAR
         /// We only want ONE character spawned. So, we need to make a check for that.
         /// </summary>
         private bool m_hasCharacterBeenSpawned = false;
+
+
+        /// <summary>
+        /// Unity built-in method (called before any other method).
+        /// </summary>
+        private void Awake()
+        {
+            Instance = this;
+        }
 
         /// <summary>
         /// The Unity Update() method.
@@ -120,6 +134,11 @@ namespace GoogleARCore.HelloAR
 
             SearchingForPlaneUI.SetActive(showSearchingUI);
 
+            CheckIfPlayerHasBeenSpawned();
+        }
+
+        private void CheckIfPlayerHasBeenSpawned()
+        {
             if (m_hasCharacterBeenSpawned == false)
             {
                 // If the player has not touched the screen, we are done with this update.
@@ -129,29 +148,11 @@ namespace GoogleARCore.HelloAR
                     return;
                 }
 
-                TrackableHit hit;
-                TrackableHitFlags raycastFilter = TrackableHitFlags.PlaneWithinBounds | TrackableHitFlags.PlaneWithinPolygon;
-                // Raycast against the location the player touched to search for planes.
-                if (Session.Raycast(touch.position.x, touch.position.y, raycastFilter, out hit))
-                {
-                    var andyObject = Instantiate(AndyAndroidPrefab, hit.Pose.position, hit.Pose.rotation);
+                AndyAndroidPrefab.Create(touch);
 
-                    // Create an anchor to allow ARCore to track the hitpoint as understanding of the physical
-                    // world evolves.
-                    var anchor = hit.Trackable.CreateAnchor(hit.Pose);
-
-                    // Andy should look at the camera but still be flush with the plane.
-                    andyObject.transform.LookAt(FirstPersonCamera.transform);
-                    andyObject.transform.rotation = Quaternion.Euler(0.0f,
-                        andyObject.transform.rotation.eulerAngles.y, andyObject.transform.rotation.z);
-
-                    // Make Andy model a child of the anchor.
-                    andyObject.transform.parent = anchor.transform;
-
-                    m_hasCharacterBeenSpawned = true;
-                }
+                m_hasCharacterBeenSpawned = true;
             }
-        }
+        }  
 
         /// <summary>
         /// Quit the application if there was a connection error for the ARCore session.
