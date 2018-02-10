@@ -7,8 +7,9 @@ public class ProceduralSpawner : MonoBehaviour
     #region Public Variables
     public static ProceduralSpawner Instance;
 
+    public LayerMask areaCheckingLayerMask;
+
     public GameObject[] objects;
-    public Vector3 position = Vector3.zero;
     #endregion
 
     #region Private Variables
@@ -21,12 +22,51 @@ public class ProceduralSpawner : MonoBehaviour
         Instance = this;
     }
 
-    public IEnumerator InitializeObjects(float radius)
+    public void InitializeObject(Vector3 position, float radius)
     {
         // Check within a spherical radius to see if anything is occupying that space.
-        if (Physics.CheckSphere(position, radius))
+        if (Physics.CheckSphere(position, radius, areaCheckingLayerMask))
         {
             // Something is occupying this space. EXIT Coroutine
+            Debug.Log("Area is occupied. Cannot spawn object.");
+            return;
+        }
+        else
+        {
+            try
+            {
+                // Don't want to exceed the number of objects. EXIT Coroutine.
+                if (m_index > objects.Length)
+                {
+                    Debug.Log("Index exceeds amount of objects in array. Exit Coroutine.");
+                    return;
+                }
+
+                // Spot is empty, we can spawn
+                objects[m_index].Create(position, false);
+
+                // Increase the index to start spawning the next object
+                m_index++;
+
+                Debug.Log("Object created and index increased.");
+
+                //position = new Vector3(Random.Range(position.x, radius), position.y, Random.Range(position.z, radius));
+            }
+            catch (System.Exception)
+            {
+
+                throw new System.Exception("No Objects set up in Array.");
+            }
+        }
+    }
+
+    public IEnumerator InitializeObjectsCoroutine(Vector3 position, float radius)
+    {
+        // Check within a spherical radius to see if anything is occupying that space.
+        if (Physics.CheckSphere(position, radius, areaCheckingLayerMask))
+        {
+            // Something is occupying this space. EXIT Coroutine
+            Debug.Log("Area is occupied. Cannot spawn object.");
             yield break;
         }
         else
@@ -34,7 +74,11 @@ public class ProceduralSpawner : MonoBehaviour
             try
             {
                 // Don't want to exceed the number of objects. EXIT Coroutine.
-                if (m_index > objects.Length) yield break;
+                if (m_index > objects.Length)
+                {
+                    Debug.Log("Index exceeds amount of objects in array. Exit Coroutine.");
+                    yield break;
+                }
 
                 // Spot is empty, we can spawn
                 objects[m_index].Create(position);
@@ -42,13 +86,15 @@ public class ProceduralSpawner : MonoBehaviour
                 // Increase the index to start spawning the next object
                 m_index++;
 
-                position = new Vector3(Random.Range(position.x, radius), position.y, Random.Range(position.z, radius));
+                Debug.Log("Object created and index increased.");
+
+                //position = new Vector3(Random.Range(position.x, radius), position.y, Random.Range(position.z, radius));
             }
             catch (System.Exception)
             {
 
                 throw new System.Exception("No Objects set up in Array.");
-            }           
+            }
         }
     }
 }
