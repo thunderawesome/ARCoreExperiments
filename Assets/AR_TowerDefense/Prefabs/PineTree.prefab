@@ -22,12 +22,13 @@ GameObject:
   - component: {fileID: 33777643970146912}
   - component: {fileID: 23326345905883830}
   - component: {fileID: 208521314746255596}
-  m_Layer: 0
+  - component: {fileID: 136898160982593964}
+  m_Layer: 8
   m_Name: PineTree
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4537902632626988
 Transform:
@@ -36,8 +37,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1422364866973774}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.2, y: 0.2, z: 0.2}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -83,6 +84,19 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1422364866973774}
   m_Mesh: {fileID: 4300000, guid: 98a96e577d8f43a4688a889f49d0859b, type: 3}
+--- !u!136 &136898160982593964
+CapsuleCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1422364866973774}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 1
+  m_Height: 3.5
+  m_Direction: 1
+  m_Center: {x: 0, y: 1.25, z: 0}
 --- !u!208 &208521314746255596
 NavMeshObstacle:
   m_ObjectHideFlags: 1
