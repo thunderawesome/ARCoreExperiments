@@ -163,16 +163,13 @@ namespace GoogleARCore.HelloAR
             {
                 Vector3 v = m_MeshVertices[i];
 
+                ProceduralSpawner.Instance.InitializeObject(m_MeshVertices[i]);
+
                 // Vector from plane center to current point
                 Vector3 d = v - m_PlaneCenter;
 
                 float scale = 1.0f - Mathf.Min(featherLength / d.magnitude, featherScale);
-                m_MeshVertices.Add((scale * d) + m_PlaneCenter);
-
-                Renderer renderer = m_MeshRenderer;
-                float radius = renderer.bounds.extents.x > renderer.bounds.extents.z ? renderer.bounds.extents.x : renderer.bounds.extents.z;
-                Debug.Log("Mesh Vertex locatoin: " + m_MeshVertices[i]);
-                ProceduralSpawner.Instance.InitializeObject(m_MeshVertices[i], radius);
+                m_MeshVertices.Add((scale * d) + m_PlaneCenter);                
 
                 m_MeshColors.Add(Color.white);
             }
