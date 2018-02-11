@@ -2,7 +2,7 @@ using UnityEngine;
 using GoogleARCore;
 using UnityEngine.AI;
 
-public class Player : MonoBehaviour
+public class RagdollPhysicsPlayer : MonoBehaviour
 {
     #region Public Variables
     public UnityEngine.UI.Text text;
@@ -19,24 +19,27 @@ public class Player : MonoBehaviour
     {
         _animator = GetComponentInChildren<Animator>();
         m_agent = GetComponent<NavMeshAgent>();
+        m_agent.updatePosition = false;
+        m_agent.updateRotation = false;
         text = GameObject.FindWithTag("Text").GetComponent<UnityEngine.UI.Text>();
     }
 
     private void Movement()
     {
+       // m_agent.velocity = new Vector3(1, 0, 1); ;
         if (m_agent.isActiveAndEnabled == true && m_agent.isOnNavMesh == true)
         {
             text.text = "<color=green>AGENT ACTIVE & ON MESH</color>";
             if (m_agent.remainingDistance <= m_agent.stoppingDistance && m_agent.remainingDistance != Mathf.Infinity && m_agent.remainingDistance != 0 && m_agent.pathPending == false)
             {
                 //animate the player to walk/run
-                _animator.SetFloat("Movement", 0);
+                //_animator.SetFloat("Movement", 0);
                 text.text = "<color=red>AGENT STOPPED</color>";
             }
             else
             {
                 //animate the player to walk/run
-                _animator.SetFloat("Movement", m_agent.speed);
+                //_animator.SetFloat("Movement", m_agent.speed);
                 text.text = "<color=green>AGENT MOVING</color>";
             }
         }
@@ -64,15 +67,4 @@ public class Player : MonoBehaviour
         Movement();
     }
     #endregion
-}
-
-[System.Serializable]
-public class Stats
-{
-    public float Speed;
-    public float JumpSpeed;
-    public float RotateSpeed;
-    public float Gravity;
-    public float MaxSpeed;
-    public float MinSpeed;
 }
