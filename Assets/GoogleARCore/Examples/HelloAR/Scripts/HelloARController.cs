@@ -51,6 +51,11 @@ namespace GoogleARCore.HelloAR
         public GameObject AndyAndroidPrefab;
 
         /// <summary>
+        /// A model to place when a raycast from a user touch hits a plane.
+        /// </summary>
+        public GameObject CampsitePrefab;
+
+        /// <summary>
         /// A gameobject parenting UI for displaying the "searching for planes" snackbar.
         /// </summary>
         public GameObject SearchingForPlaneUI;
@@ -155,8 +160,11 @@ namespace GoogleARCore.HelloAR
                 }
 
                 AndyAndroidPrefab.Create(touch);
+                CampsitePrefab.Create(touch, Vector3.forward*2);
+
 
                 m_hasCharacterBeenSpawned = true;
+                ProceduralSpawner.Instance.canBeginSpawning = true;
             }
         }
 

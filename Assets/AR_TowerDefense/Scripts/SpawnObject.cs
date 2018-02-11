@@ -3,10 +3,16 @@ using UnityEngine;
 
 public static class SpawnObject
 {
-    public static void Create(this GameObject obj, Touch touch)
+    public static void Create(this GameObject obj, Touch touch, Vector2? offset = null)
     {
         TrackableHit hit;
         TrackableHitFlags raycastFilter = TrackableHitFlags.PlaneWithinBounds | TrackableHitFlags.PlaneWithinPolygon;
+
+        if(offset != null)
+        {
+            touch.position -= (Vector2)offset;
+        }
+
         // Raycast against the location the player touched to search for planes.
         if (Session.Raycast(touch.position.x, touch.position.y, raycastFilter, out hit))
         {
