@@ -420,8 +420,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4576641592558248}
   - component: {fileID: 54016342446131104}
+  - component: {fileID: 135977262134330014}
   m_Layer: 8
-  m_Name: Player
+  m_Name: glObePlayer
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -805,7 +806,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1781371685487244}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_Children:
   - {fileID: 4321895306409180}
@@ -1071,6 +1072,18 @@ MonoBehaviour:
     Gravity: 5
     MaxSpeed: 10
     MinSpeed: 5
+--- !u!135 &135977262134330014
+SphereCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1781371685487244}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 2
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!137 &137446283542985510
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
