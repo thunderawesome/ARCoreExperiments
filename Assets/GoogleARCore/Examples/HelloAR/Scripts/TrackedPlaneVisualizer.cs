@@ -162,14 +162,13 @@ namespace GoogleARCore.HelloAR
             for (int i = 0; i < planePolygonCount; ++i)
             {
                 Vector3 v = m_MeshVertices[i];
-
-                ProceduralSpawner.Instance.InitializeObject(m_MeshVertices[i]);
+                ProceduralSpawner.Instance.InitializeObject(v);
 
                 // Vector from plane center to current point
                 Vector3 d = v - m_PlaneCenter;
 
                 float scale = 1.0f - Mathf.Min(featherLength / d.magnitude, featherScale);
-                m_MeshVertices.Add((scale * d) + m_PlaneCenter);                
+                m_MeshVertices.Add((scale * d) + m_PlaneCenter);
 
                 m_MeshColors.Add(Color.white);
             }
