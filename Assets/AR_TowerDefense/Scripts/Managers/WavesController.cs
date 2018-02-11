@@ -49,7 +49,7 @@ namespace Battlerock
         public static WavesController Instance;
         public Waves[] waves;
 
-        public bool hasStarted = false;
+        public bool hasStarted = false;        
         #endregion
 
         #region Public Properties

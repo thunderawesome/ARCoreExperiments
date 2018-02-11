@@ -66,7 +66,7 @@ namespace Battlerock
 
         private static readonly Quaternion QUATERNION_IDENTITY = new Quaternion(0, 0, 0, 1);
 
-        void Awake()
+        void Start()
         {
             Instance = this;
 
