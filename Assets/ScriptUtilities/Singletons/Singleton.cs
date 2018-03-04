@@ -41,8 +41,8 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
 
                     if (_instance == null)
                     {
-                        GameObject singleton = new GameObject();
-                        _instance = singleton.AddComponent<T>();
+                        GameObject singleton = Instantiate(Resources.Load(typeof(T).Name, typeof(GameObject))) as GameObject;
+                        _instance = singleton.GetComponent<T>();
                         singleton.name = "(singleton) " + typeof(T).ToString();
 
                         DontDestroyOnLoad(singleton);

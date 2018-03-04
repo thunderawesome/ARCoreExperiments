@@ -1,5 +1,7 @@
 ﻿//-----------------------------------------------------------------------
-// <copyright file="HelloARController.cs" company="Google">
+// <copyright file="ARController.cs" company="Google">
+//
+// Based off of the HelloARController.cs file.
 //
 // Copyright 2017 Google Inc. All Rights Reserved.
 //
