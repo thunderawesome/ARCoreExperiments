@@ -51,7 +51,7 @@ public class Player : MonoBehaviour
         }
 
         // Raycast against the location the player touched to search for planes.
-        if (Session.Raycast(touch.position.x, touch.position.y, raycastFilter, out hit))
+        if (Frame.Raycast(touch.position.x, touch.position.y, raycastFilter, out hit))
         {
             Debug.Log("<color=green>DESTINATION SET!</color>");
             text.text = "<color=green>AGENT DESTINATION SET</color>";

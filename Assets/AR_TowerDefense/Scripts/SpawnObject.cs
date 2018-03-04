@@ -14,7 +14,7 @@ public static class SpawnObject
         }
 
         // Raycast against the location the player touched to search for planes.
-        if (Session.Raycast(touch.position.x, touch.position.y, raycastFilter, out hit))
+        if (Frame.Raycast(touch.position.x, touch.position.y, raycastFilter, out hit))
         {
             Debug.Log("Creating object at raycast hit location based on TOUCH.");
             AnchorObject(obj, hit);
@@ -28,7 +28,7 @@ public static class SpawnObject
             TrackableHit hit;
             TrackableHitFlags raycastFilter = TrackableHitFlags.PlaneWithinBounds | TrackableHitFlags.PlaneWithinPolygon;
             // Raycast against the location to search for planes.
-            if (Session.Raycast(position.x, position.y, raycastFilter, out hit))
+            if (Frame.Raycast(position.x, position.y, raycastFilter, out hit))
             {
                 Debug.Log("Creating object at raycast hit location based on POSITION.");
                 AnchorObject(obj, hit);
@@ -49,7 +49,7 @@ public static class SpawnObject
         // Create an anchor to allow ARCore to track the hitpoint as understanding of the physical
         // world evolves.
         var anchor = hit.Trackable.CreateAnchor(hit.Pose);
-        GoogleARCore.HelloAR.HelloARController.Instance.anchor = anchor;
+        GoogleARCore.Battlerock.ARController.Instance.anchor = anchor;
         Debug.Log("Anchor created in world.");
 
         if (lookAt != null)
