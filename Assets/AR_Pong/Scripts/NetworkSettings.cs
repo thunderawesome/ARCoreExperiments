@@ -17,6 +17,7 @@ namespace Battlerock
         [Tooltip("The maximum number of players per room")]
         public byte maxPlayersPerRoom = 4;
 
+        [Tooltip("List of Levels for loading.")]
         public LEVEL level = LEVEL.PongLauncher;
     }
 }
