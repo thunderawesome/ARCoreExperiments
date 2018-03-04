@@ -127,7 +127,7 @@ namespace GoogleARCore.Battlerock
                 // coordinates.
                 GameObject planeObject = Instantiate(TrackedPlanePrefab, Vector3.zero, Quaternion.identity,
                     transform);
-                planeObject.GetComponent<TrackedPlaneVisualizer>().Initialize(m_NewPlanes[i]);
+                planeObject.GetComponent<GoogleARCore.HelloAR.TrackedPlaneVisualizer>().Initialize(m_NewPlanes[i]);
             }
 
             // Disable the snackbar UI when no planes are valid.
