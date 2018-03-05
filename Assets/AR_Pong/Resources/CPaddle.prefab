@@ -69,6 +69,8 @@ GameObject:
   - component: {fileID: 33250989213136060}
   - component: {fileID: 23010333574771824}
   - component: {fileID: 64680494345025752}
+  - component: {fileID: 114855312691765386}
+  - component: {fileID: 114404833773666216}
   m_Layer: 0
   m_Name: CPaddle
   m_TagString: Untagged
@@ -97,7 +99,7 @@ Transform:
   m_GameObject: {fileID: 1885496702857846}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.05, y: 0.05, z: 0.05}
   m_Children:
   - {fileID: 4957526430200280}
   m_Father: {fileID: 0}
@@ -199,6 +201,44 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startPos: {fileID: 4385518216577764}
   endPos: {fileID: 4938979853013360}
+--- !u!114 &114404833773666216
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1885496702857846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48f89612f4191c94e849bdcd66675814, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  offset: 0.025
+--- !u!114 &114855312691765386
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1885496702857846}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ownerId: 0
+  group: 0
+  OwnerShipWasTransfered: 0
+  prefixBackup: -1
+  synchronization: 3
+  onSerializeTransformOption: 3
+  onSerializeRigidBodyOption: 2
+  ownershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 4493817243251562}
+  ObservedComponentsFoldoutOpen: 1
+  viewIdField: 0
+  instantiationId: -1
+  currentMasterID: -1
+  isRuntimeInstantiated: 0
 --- !u!120 &120270406044038500
 LineRenderer:
   m_ObjectHideFlags: 1
@@ -244,7 +284,7 @@ LineRenderer:
   - {x: 0.5, y: 0, z: 0}
   m_Parameters:
     serializedVersion: 2
-    widthMultiplier: 0.05
+    widthMultiplier: 0.001
     widthCurve:
       serializedVersion: 2
       m_Curve:

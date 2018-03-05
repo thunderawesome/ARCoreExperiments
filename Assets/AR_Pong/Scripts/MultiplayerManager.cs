@@ -1,17 +1,21 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class MultiplayerManager : MonoBehaviour
+namespace Battlerock
 {
-    #region Public Variables
-    public static MultiplayerManager Instance;
-    #endregion
-
-    #region Unity Methods
-    private void Awake()
+    public class MultiplayerManager : MonoBehaviour
     {
-        Instance = this;
+        #region Public Variables
+        public static MultiplayerManager Instance;
+        #endregion
+
+        #region Unity Methods
+        /// <summary>
+        /// Unity's built-in method (Called before anything else)
+        /// </summary>
+        private void Awake()
+        {
+            Instance = this;
+        }
+        #endregion
     }
-    #endregion
 }

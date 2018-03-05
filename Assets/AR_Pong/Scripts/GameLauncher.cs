@@ -8,14 +8,8 @@
 // <author>developer@exitgames.com</author>
 // --------------------------------------------------------------------------------------------------------------------
 
-using System;
-using System.Collections;
-
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
-
-using Random = UnityEngine.Random;
 
 /// <summary>
 /// Launch manager. Connect, join a random room or create one if none or all full.
@@ -24,7 +18,6 @@ namespace Battlerock
 {
     public class GameLauncher : Photon.PunBehaviour
     {
-
         #region Public Variables
 
         [Tooltip("The Ui Panel to let the user enter name, connect and play")]

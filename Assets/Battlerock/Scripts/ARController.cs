@@ -88,9 +88,15 @@ namespace GoogleARCore.Battlerock
         private bool m_IsQuitting = false;
         #endregion
 
-        #region Unity Methods
+        #region Unity Methods   
+        /// <summary>
+        /// Unity's built-in method (Called before anything else)
+        /// </summary>
+        private void Awake()
+        {
+            Instance = this;
+        }
 
-        
         /// <summary>
         /// The Unity Update() method.
         /// </summary>
@@ -156,27 +162,30 @@ namespace GoogleARCore.Battlerock
             TrackableHitFlags raycastFilter = TrackableHitFlags.PlaneWithinPolygon |
                 TrackableHitFlags.FeaturePointWithSurfaceNormal;
 
-            if (Frame.Raycast(touch.position.x, touch.position.y, raycastFilter, out hit))
+            if (anchor == null)
             {
-                var andyObject = Instantiate(AndyAndroidPrefab, hit.Pose.position, hit.Pose.rotation);
-
-                // Create an anchor to allow ARCore to track the hitpoint as understanding of the physical
-                // world evolves.
-                var anchor = hit.Trackable.CreateAnchor(hit.Pose);
-
-                // Andy should look at the camera but still be flush with the plane.
-                if ((hit.Flags & TrackableHitFlags.PlaneWithinPolygon) != TrackableHitFlags.None)
+                if (Frame.Raycast(touch.position.x, touch.position.y, raycastFilter, out hit))
                 {
-                    // Get the camera position and match the y-component with the hit position.
-                    Vector3 cameraPositionSameY = FirstPersonCamera.transform.position;
-                    cameraPositionSameY.y = hit.Pose.position.y;
+                    var andyObject = PhotonNetwork.Instantiate(AndyAndroidPrefab.name, hit.Pose.position, hit.Pose.rotation, 0);
 
-                    // Have Andy look toward the camera respecting his "up" perspective, which may be from ceiling.
-                    andyObject.transform.LookAt(cameraPositionSameY, andyObject.transform.up);
+                    // Create an anchor to allow ARCore to track the hitpoint as understanding of the physical
+                    // world evolves.
+                    anchor = hit.Trackable.CreateAnchor(hit.Pose);
+
+                    // Andy should look at the camera but still be flush with the plane.
+                    if ((hit.Flags & TrackableHitFlags.PlaneWithinPolygon) != TrackableHitFlags.None)
+                    {
+                        // Get the camera position and match the y-component with the hit position.
+                        Vector3 cameraPositionSameY = FirstPersonCamera.transform.position;
+                        cameraPositionSameY.y = hit.Pose.position.y;
+
+                        // Have Andy look toward the camera respecting his "up" perspective, which may be from ceiling.
+                        andyObject.transform.LookAt(cameraPositionSameY, andyObject.transform.up);
+                    }
+
+                    // Make Andy model a child of the anchor.
+                    andyObject.transform.parent = anchor.transform;
                 }
-
-                // Make Andy model a child of the anchor.
-                andyObject.transform.parent = anchor.transform;
             }
         }
         #endregion
