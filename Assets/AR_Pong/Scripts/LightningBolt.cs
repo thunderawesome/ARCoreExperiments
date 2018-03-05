@@ -4,7 +4,7 @@ using UnityEngine;
 /// <summary>
 /// This class should create a lightning effect between two points
 /// </summary>
-public class LightningBoltUnity : MonoBehaviour {
+public class LightningBolt : MonoBehaviour {
 
     public Transform startPos;
     public Transform endPos;
