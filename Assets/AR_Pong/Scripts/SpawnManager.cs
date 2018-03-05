@@ -6,7 +6,7 @@ namespace Battlerock
     public class SpawnManager : MonoBehaviour
     {
         #region Public Variables
-        public Transform playerPrefab;
+        public Transform[] prefabs;
         #endregion
 
         #region Unity Methods
@@ -24,16 +24,11 @@ namespace Battlerock
 
             _GameManager.Instance.gameMode = GameMode.Preparation;
 
-            // we're in a room. spawn a character for the local player. it gets synced by using PhotonNetwork.Instantiate
-            GameObject player = PhotonNetwork.Instantiate(this.playerPrefab.name, transform.position, Quaternion.identity, 0);
-
-            //MultiplayerManager.Instance.players.Add(player.GetComponent<PhotonPlayer>());
-            for (int i = 0; i < PhotonNetwork.playerList.Length; i++)
+            for (int i = 0; i < prefabs.Length; i++)
             {
-                Debug.Log(PhotonNetwork.playerList[i]);
+                // we're in a room. spawn a character for the local player. it gets synced by using PhotonNetwork.Instantiate
+                GameObject player = PhotonNetwork.Instantiate(prefabs[i].name, transform.position, Quaternion.identity, 0);
             }
-            
-            //player.transform.parent = MultiplayerManager.Instance.anchor.transform;
         }
     }
     #endregion
