@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 namespace Battlerock
 {
@@ -12,22 +13,27 @@ namespace Battlerock
         /// <summary>
         /// Unity's built-in method (Called right after Awake)
         /// </summary>
-        private void Start()
+        private IEnumerator Start()
         {
             // in case we started this demo with the wrong scene being active, simply load the menu scene
             if (!PhotonNetwork.connected)
             {
                 UnityEngine.SceneManagement.SceneManager.LoadScene(NetworkSettings.Instance.level.ToString());
-                return;
+                yield return null;
             }
 
             _GameManager.Instance.gameMode = GameMode.Preparation;
 
 
-            // we're in a room. spawn a character for the local player. it gets synced by using PhotonNetwork.Instantiate
-            PhotonNetwork.Instantiate(this.playerPrefab.name, transform.position, Quaternion.identity, 0);
+            while (MultiplayerManager.Instance.anchor == null)
+            {
+                yield return null;
+            }
 
-            //player.transform.parent = GoogleARCore.Battlerock.ARController.Instance.FirstPersonCamera.transform;
+            // we're in a room. spawn a character for the local player. it gets synced by using PhotonNetwork.Instantiate
+            GameObject player = PhotonNetwork.Instantiate(this.playerPrefab.name, transform.position, Quaternion.identity, 0);
+
+            player.transform.parent = MultiplayerManager.Instance.anchor.transform;
         }
     }
     #endregion

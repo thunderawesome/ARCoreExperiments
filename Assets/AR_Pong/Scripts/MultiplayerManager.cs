@@ -6,6 +6,11 @@ namespace Battlerock
     {
         #region Public Variables
         public static MultiplayerManager Instance;
+
+        /// <summary>
+        /// Anchor point used by the player.
+        /// </summary>
+        public GoogleARCore.Anchor anchor;
         #endregion
 
         #region Unity Methods
