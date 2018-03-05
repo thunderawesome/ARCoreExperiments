@@ -20,16 +20,16 @@
 // </copyright>
 //-----------------------------------------------------------------------
 
-namespace GoogleARCore.Battlerock
+namespace GoogleARCore.Experiments
 {
     using System.Collections.Generic;
     using GoogleARCore;
     using UnityEngine;
-    using UnityEngine.Rendering;
+
+    using Battlerock;
 
 #if UNITY_EDITOR
     using Input = InstantPreviewInput;
-    using GoogleARCore.HelloAR;
 #endif
 
     /// <summary>
@@ -63,10 +63,6 @@ namespace GoogleARCore.Battlerock
         /// </summary>
         public GameObject SearchingForPlaneUI;
 
-        /// <summary>
-        /// Anchor point used by the player.
-        /// </summary>
-        public Anchor anchor;
         #endregion
 
         #region Private Variables
@@ -162,7 +158,7 @@ namespace GoogleARCore.Battlerock
             TrackableHitFlags raycastFilter = TrackableHitFlags.PlaneWithinPolygon |
                 TrackableHitFlags.FeaturePointWithSurfaceNormal;
 
-            if (anchor == null)
+            if (MultiplayerManager.Instance.anchor == null)
             {
                 if (Frame.Raycast(touch.position.x, touch.position.y, raycastFilter, out hit))
                 {
@@ -170,7 +166,7 @@ namespace GoogleARCore.Battlerock
 
                     // Create an anchor to allow ARCore to track the hitpoint as understanding of the physical
                     // world evolves.
-                    anchor = hit.Trackable.CreateAnchor(hit.Pose);
+                    MultiplayerManager.Instance.anchor = hit.Trackable.CreateAnchor(hit.Pose);
 
                     // Andy should look at the camera but still be flush with the plane.
                     if ((hit.Flags & TrackableHitFlags.PlaneWithinPolygon) != TrackableHitFlags.None)
@@ -184,7 +180,7 @@ namespace GoogleARCore.Battlerock
                     }
 
                     // Make Andy model a child of the anchor.
-                    andyObject.transform.parent = anchor.transform;
+                    andyObject.transform.parent = MultiplayerManager.Instance.anchor.transform;
                 }
             }
         }
