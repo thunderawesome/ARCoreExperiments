@@ -13,27 +13,27 @@ namespace Battlerock
         /// <summary>
         /// Unity's built-in method (Called right after Awake)
         /// </summary>
-        private IEnumerator Start()
+        private void Start()
         {
             // in case we started this demo with the wrong scene being active, simply load the menu scene
             if (!PhotonNetwork.connected)
             {
                 UnityEngine.SceneManagement.SceneManager.LoadScene(NetworkSettings.Instance.level.ToString());
-                yield return null;
+                return;
             }
 
             _GameManager.Instance.gameMode = GameMode.Preparation;
 
-
-            while (MultiplayerManager.Instance.anchor == null)
-            {
-                yield return null;
-            }
-
             // we're in a room. spawn a character for the local player. it gets synced by using PhotonNetwork.Instantiate
             GameObject player = PhotonNetwork.Instantiate(this.playerPrefab.name, transform.position, Quaternion.identity, 0);
 
-            player.transform.parent = MultiplayerManager.Instance.anchor.transform;
+            //MultiplayerManager.Instance.players.Add(player.GetComponent<PhotonPlayer>());
+            for (int i = 0; i < PhotonNetwork.playerList.Length; i++)
+            {
+                Debug.Log(PhotonNetwork.playerList[i]);
+            }
+            
+            //player.transform.parent = MultiplayerManager.Instance.anchor.transform;
         }
     }
     #endregion

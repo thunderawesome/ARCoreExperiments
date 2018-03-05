@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEditor;
+using UnityEngine;
 
 namespace Battlerock
 {
@@ -19,5 +21,6 @@ namespace Battlerock
 
         [Tooltip("List of Levels for loading.")]
         public LEVEL level = LEVEL.PongLauncher;
+
     }
 }
