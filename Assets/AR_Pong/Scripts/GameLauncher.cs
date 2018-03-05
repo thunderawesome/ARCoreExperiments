@@ -68,7 +68,7 @@ namespace Battlerock
             // this makes sure we can use PhotonNetwork.LoadLevel() on the master client and all clients in the same room sync their level automatically
             PhotonNetwork.automaticallySyncScene = true;
 
-
+            _GameManager.Instance.gameMode = GameMode.Lobby;
         }
 
         #endregion
@@ -222,13 +222,7 @@ namespace Battlerock
                 // Load the Room Level. 
                 PhotonNetwork.LoadLevel(LEVEL.PongGame.ToString());
             }
-
-
-            //PhotonNetwork.Instantiate("Cube", Vector3.zero, Quaternion.identity, 0);
-            //Debug.Log("<color=green>Number of players: </color>" + PhotonNetwork.playerList.Length);
-
         }
-
         #endregion
     }
 }

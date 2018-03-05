@@ -192,6 +192,14 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 11414654, guid: f773d1fa10a4f4e0d88490eab5d5b46d, type: 2}
+      propertyPath: m_Text
+      value: Multiplayer
+      objectReference: {fileID: 0}
+    - target: {fileID: 11414656, guid: f773d1fa10a4f4e0d88490eab5d5b46d, type: 2}
+      propertyPath: m_Text
+      value: AR Pong
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f773d1fa10a4f4e0d88490eab5d5b46d, type: 2}
   m_IsPrefabParent: 0
@@ -4064,7 +4072,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controlPanel: {fileID: 1384252624}
   feedbackText: {fileID: 1814088000}
-  maxPlayersPerRoom: 4
   loaderAnimation: {fileID: 2023195871}
 --- !u!1 &1074917887
 GameObject:
