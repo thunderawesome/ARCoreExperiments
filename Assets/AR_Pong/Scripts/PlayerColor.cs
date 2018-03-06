@@ -8,7 +8,6 @@
 using UnityEngine;
 using Photon;
 using ExitGames.Client.Photon;
-using UnityEngine.UI;
 
 namespace Battlerock
 {
