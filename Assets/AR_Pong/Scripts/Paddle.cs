@@ -24,15 +24,15 @@ namespace Battlerock
         {
             m_photonView = GetComponent<PhotonView>();
 
-            if (m_photonView.isMine)
-            {
-                var renderers = GetComponentsInChildren<Renderer>();
+            //if (m_photonView.isMine)
+            //{
+            //    var renderers = GetComponentsInChildren<Renderer>();
 
-                for (int i = 0; i < renderers.Length; i++)
-                {
-                    renderers[i].enabled = false;
-                }               
-            }
+            //    for (int i = 0; i < renderers.Length; i++)
+            //    {
+            //        renderers[i].enabled = false;
+            //    }               
+            //}
         }
 
         // Update is called once per frame

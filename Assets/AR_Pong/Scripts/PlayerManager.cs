@@ -12,10 +12,11 @@ public class PlayerManager : MonoBehaviour
 
 
     // Use this for initialization
-    void Start()
+    public void Initialize()
     {
         playerName = PhotonNetwork.playerName;
-        playerColor = (Color)PhotonNetwork.player.CustomProperties["PlayerColor"];
+        var col = (Vector3)PhotonNetwork.player.CustomProperties["PlayerColor"];
+        playerColor = new Color(col.x, col.y, col.z, 1);
 
         //set the Game objects underneath the Player like the paddle to the players color
         foreach (Renderer r in GetComponentsInChildren<Renderer>())
