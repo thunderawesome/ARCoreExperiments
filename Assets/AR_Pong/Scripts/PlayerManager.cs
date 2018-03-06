@@ -10,23 +10,25 @@ public class PlayerManager : PunBehaviour
     public Color playerColor;
     public int playerScore;
 
-
     // Use this for initialization
     public void Start()
     {
+        playerName = PhotonNetwork.playerName;
+
         if (photonView.isMine)
         {
             Vector3 camPos = GoogleARCore.Experiments.ARController.Instance.FirstPersonCamera.transform.position;
-            transform.position = new Vector3(camPos.x, camPos.y, camPos.z);
+            transform.position = new Vector3(camPos.x, camPos.y, camPos.z);            
+
+            var col = (Vector3)PhotonNetwork.player.CustomProperties[playerName];
+            playerColor = new Color(col.x, col.y, col.z, 1);            
         }
 
         for (int i = 0; i < PhotonNetwork.playerList.Length; i++)
         {
-            if(PhotonNetwork.playerList[i].ID == photonView.owner.ID)
+            if (PhotonNetwork.playerList[i].ID == photonView.owner.ID)
             {
-                playerName = photonView.owner.NickName;
-
-                var col = (Vector3)PhotonNetwork.player.CustomProperties[playerName];
+                var col = (Vector3)PhotonNetwork.playerList[i].CustomProperties[playerName];
                 playerColor = new Color(col.x, col.y, col.z, 1);
 
                 //set the Game objects underneath the Player like the paddle to the players color
@@ -35,7 +37,7 @@ public class PlayerManager : PunBehaviour
                     r.material.color = playerColor;
                 }
             }
-        }  
+        }
 
         //reset players score to zero
         playerScore = 0;
