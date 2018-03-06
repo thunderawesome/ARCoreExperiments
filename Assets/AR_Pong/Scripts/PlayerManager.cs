@@ -13,21 +13,18 @@ public class PlayerManager : PunBehaviour
     // Use this for initialization
     public void Start()
     {
-        playerName = PhotonNetwork.playerName;
-
+        
         if (photonView.isMine)
         {
             Vector3 camPos = GoogleARCore.Experiments.ARController.Instance.FirstPersonCamera.transform.position;
-            transform.position = new Vector3(camPos.x, camPos.y, camPos.z);            
-
-            var col = (Vector3)PhotonNetwork.player.CustomProperties[playerName];
-            playerColor = new Color(col.x, col.y, col.z, 1);            
+            transform.position = new Vector3(camPos.x, camPos.y, camPos.z);
         }
 
         for (int i = 0; i < PhotonNetwork.playerList.Length; i++)
         {
             if (PhotonNetwork.playerList[i].ID == photonView.owner.ID)
             {
+                playerName = PhotonNetwork.playerList[i].NickName;
                 var col = (Vector3)PhotonNetwork.playerList[i].CustomProperties[playerName];
                 playerColor = new Color(col.x, col.y, col.z, 1);
 
