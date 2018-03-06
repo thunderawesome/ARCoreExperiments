@@ -2,27 +2,35 @@
 using System.Collections.Generic;
 using UnityEngine;
 using ExitGames.Client.Photon;
+using Photon;
 
-public class PlayerManager : MonoBehaviour
+public class PlayerManager : PunBehaviour
 {
-
     public string playerName;
     public Color playerColor;
     public int playerScore;
 
 
     // Use this for initialization
-    public void Initialize()
-    {
-        playerName = PhotonNetwork.playerName;
-        var col = (Vector3)PhotonNetwork.player.CustomProperties["PlayerColor"];
-        playerColor = new Color(col.x, col.y, col.z, 1);
+    public void Start()
+    {       
 
-        //set the Game objects underneath the Player like the paddle to the players color
-        foreach (Renderer r in GetComponentsInChildren<Renderer>())
+        for (int i = 0; i < PhotonNetwork.playerList.Length; i++)
         {
-            r.material.color = playerColor;
-        }
+            if(PhotonNetwork.playerList[i].ID == photonView.owner.ID)
+            {
+                playerName = photonView.owner.NickName;
+
+                var col = (Vector3)PhotonNetwork.player.CustomProperties[playerName];
+                playerColor = new Color(col.x, col.y, col.z, 1);
+
+                //set the Game objects underneath the Player like the paddle to the players color
+                foreach (Renderer r in GetComponentsInChildren<Renderer>())
+                {
+                    r.material.color = playerColor;
+                }
+            }
+        }  
 
         //reset players score to zero
         playerScore = 0;

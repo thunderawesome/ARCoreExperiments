@@ -35,11 +35,7 @@ namespace Battlerock
                 //    Debug.Log(obj.name);
                 //}
 
-               var obj = PhotonNetwork.Instantiate(prefabs[i].name, transform.position, Quaternion.identity, 0);
-               if( obj.GetComponent<PlayerManager>() != null)
-                {
-                    obj.GetComponent<PlayerManager>().Initialize(); 
-                }
+                PhotonNetwork.Instantiate(prefabs[i].name, transform.position, Quaternion.identity, 0);
 
             }
         }
