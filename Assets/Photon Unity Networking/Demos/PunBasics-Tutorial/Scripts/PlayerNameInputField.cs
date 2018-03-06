@@ -35,7 +35,6 @@ namespace ExitGames.Demos.DemoAnimator
         /// </summary>
         void Start()
         {
-            PlayerPrefs.DeleteAll();
             string defaultName = "";
             InputField _inputField = this.GetComponent<InputField>();
 
