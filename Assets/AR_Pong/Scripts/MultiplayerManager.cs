@@ -12,6 +12,8 @@ namespace Battlerock
         /// Anchor point used by the player.
         /// </summary>
         public GoogleARCore.Anchor anchor;
+
+        public Transform anchorPoint;
         #endregion
 
         #region Unity Methods
