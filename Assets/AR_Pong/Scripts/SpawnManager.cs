@@ -32,7 +32,10 @@ namespace Battlerock
                     var obj = PhotonNetwork.Instantiate(prefabs[i].name, MultiplayerManager.Instance.anchorPoint.position, Quaternion.identity, 0);
                     obj.transform.parent = MultiplayerManager.Instance.anchorPoint;
                     obj.transform.localPosition = Vector3.zero;
+                    Debug.Log(obj.name);
                 }
+
+                PhotonNetwork.Instantiate(prefabs[i].name, transform.position, Quaternion.identity, 0);
             }
         }
     }

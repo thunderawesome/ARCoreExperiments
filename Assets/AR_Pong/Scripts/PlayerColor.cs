@@ -28,7 +28,7 @@ namespace Battlerock
         /// <summary>
         /// Color this player selected. Defaults to grey.
         /// </summary>
-        public Color MyColor = Color.grey;
+        public Vector3 MyColor;
         #endregion
 
         #region Public Methods
@@ -38,7 +38,8 @@ namespace Battlerock
         /// </summary>
         public void SetPlayerColor()
         {
-            MyColor = GetComponent<ColorPicker>().CurrentColor;
+            var currentColor = GetComponent<ColorPicker>().CurrentColor;
+            MyColor = new Vector3(currentColor.r, currentColor.g, currentColor.b);
 
             Hashtable setPlayerColor = new Hashtable() { { ColorProp, MyColor } };
             PhotonNetwork.player.SetCustomProperties(setPlayerColor);
