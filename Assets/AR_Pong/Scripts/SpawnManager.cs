@@ -18,7 +18,7 @@ namespace Battlerock
             // in case we started this demo with the wrong scene being active, simply load the menu scene
             if (!PhotonNetwork.connected)
             {
-                UnityEngine.SceneManagement.SceneManager.LoadScene(NetworkSettings.Instance.level.ToString());
+                UnityEngine.SceneManagement.SceneManager.LoadScene(LEVEL.PongGame.ToString());
                 return;
             }
 

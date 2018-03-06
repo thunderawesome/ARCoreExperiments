@@ -445,7 +445,7 @@ MonoBehaviour:
   m_Text: 
   m_CaretBlinkRate: 1.7
   m_CaretWidth: 1
-  m_ReadOnly: 1
+  m_ReadOnly: 0
 --- !u!114 &552847601
 MonoBehaviour:
   m_ObjectHideFlags: 0

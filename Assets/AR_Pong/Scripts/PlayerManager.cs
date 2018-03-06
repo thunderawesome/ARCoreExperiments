@@ -13,7 +13,12 @@ public class PlayerManager : PunBehaviour
 
     // Use this for initialization
     public void Start()
-    {       
+    {
+        if (photonView.isMine)
+        {
+            Vector3 camPos = GoogleARCore.Experiments.ARController.Instance.FirstPersonCamera.transform.position;
+            transform.position = new Vector3(camPos.x, camPos.y, camPos.z);
+        }
 
         for (int i = 0; i < PhotonNetwork.playerList.Length; i++)
         {
