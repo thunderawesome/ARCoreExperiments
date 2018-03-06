@@ -26,16 +26,21 @@ namespace Battlerock
 
             for (int i = 0; i < prefabs.Length; i++)
             {
-                if (MultiplayerManager.Instance.anchorPoint != null)
+                //if (MultiplayerManager.Instance.anchorPoint != null)
+                //{
+                //    // we're in a room. spawn a character for the local player. it gets synced by using PhotonNetwork.Instantiate
+                //    var obj = PhotonNetwork.Instantiate(prefabs[i].name, MultiplayerManager.Instance.anchorPoint.position, Quaternion.identity, 0);
+                //    obj.transform.parent = MultiplayerManager.Instance.anchorPoint;
+                //    obj.transform.localPosition = Vector3.zero;
+                //    Debug.Log(obj.name);
+                //}
+
+               var obj = PhotonNetwork.Instantiate(prefabs[i].name, transform.position, Quaternion.identity, 0);
+               if( obj.GetComponent<PlayerManager>() != null)
                 {
-                    // we're in a room. spawn a character for the local player. it gets synced by using PhotonNetwork.Instantiate
-                    var obj = PhotonNetwork.Instantiate(prefabs[i].name, MultiplayerManager.Instance.anchorPoint.position, Quaternion.identity, 0);
-                    obj.transform.parent = MultiplayerManager.Instance.anchorPoint;
-                    obj.transform.localPosition = Vector3.zero;
-                    Debug.Log(obj.name);
+                    obj.GetComponent<PlayerManager>().Initialize(); 
                 }
 
-                PhotonNetwork.Instantiate(prefabs[i].name, transform.position, Quaternion.identity, 0);
             }
         }
     }
