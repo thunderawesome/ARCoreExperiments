@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4200073276746898}
   - component: {fileID: 33783614071556936}
   - component: {fileID: 23129165072131792}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: ImageFrame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 64603027354889968}
   - component: {fileID: 54150063896781564}
   - component: {fileID: 114690104902334778}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Goal
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4525287057476006}
   - component: {fileID: 120202920837994678}
   - component: {fileID: 114712197278243040}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Line (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 4573444778507118}
   - component: {fileID: 120631520674600462}
   - component: {fileID: 114164669357352588}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Line (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -53,7 +53,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4972039576731436}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: startPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -70,7 +70,7 @@ GameObject:
   - component: {fileID: 4232323434562802}
   - component: {fileID: 120662721145468196}
   - component: {fileID: 114669670964439422}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Line (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -85,7 +85,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4510087878114192}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: endPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -100,7 +100,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4200683158447212}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: startPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -116,7 +116,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4204833699677450}
   - component: {fileID: 65777140877437926}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Net_Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -133,7 +133,7 @@ GameObject:
   - component: {fileID: 4086732233547972}
   - component: {fileID: 120471004055901476}
   - component: {fileID: 114172404456173176}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Line (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -148,7 +148,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4136179959643750}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: startPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -163,7 +163,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4054582655891500}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: endPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -178,7 +178,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4423619711823334}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: endPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -195,7 +195,7 @@ GameObject:
   - component: {fileID: 4590136078389698}
   - component: {fileID: 120148975156252258}
   - component: {fileID: 114734182894009248}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Line
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -210,7 +210,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4353182521385506}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: startPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -225,7 +225,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4993223136089566}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: endPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -240,7 +240,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4409417414983126}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: endPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -255,7 +255,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4824474349700188}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: startPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -270,7 +270,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4908295963915348}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: startPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -289,9 +289,8 @@ GameObject:
   - component: {fileID: 23328524344006310}
   - component: {fileID: 64215714368231518}
   - component: {fileID: 54185358511079998}
-  - component: {fileID: 114343124708335990}
   - component: {fileID: 114383779469769600}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BowlPaddle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -308,7 +307,7 @@ GameObject:
   - component: {fileID: 4855553627943820}
   - component: {fileID: 120430079432408548}
   - component: {fileID: 114464735658145846}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Line (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -323,7 +322,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4471412490867018}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: endPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -340,7 +339,7 @@ GameObject:
   - component: {fileID: 4916377623293738}
   - component: {fileID: 114819913872427126}
   - component: {fileID: 114766960874250262}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: PongPlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -785,7 +784,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48f89612f4191c94e849bdcd66675814, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offset: -1
 --- !u!114 &114464735658145846
 MonoBehaviour:
   m_ObjectHideFlags: 1

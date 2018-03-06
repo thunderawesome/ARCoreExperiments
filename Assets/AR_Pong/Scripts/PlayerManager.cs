@@ -14,9 +14,11 @@ public class PlayerManager : PunBehaviour
     // Use this for initialization
     public void Start()
     {
-        playerName = PhotonNetwork.playerName;
-        var col = (Vector3)PhotonNetwork.player.CustomProperties["PlayerColor"];
-        playerColor = new Color(col.x, col.y, col.z, 1);
+        if (photonView.isMine)
+        {
+            Vector3 camPos = GoogleARCore.Experiments.ARController.Instance.FirstPersonCamera.transform.position;
+            transform.position = new Vector3(camPos.x, camPos.y, camPos.z);
+        }
 
         for (int i = 0; i < PhotonNetwork.playerList.Length; i++)
         {
@@ -34,28 +36,6 @@ public class PlayerManager : PunBehaviour
                 }
             }
         }  
-
-        //for (int i = 0; i < PhotonNetwork.otherPlayers.Length; i++)
-        //{
-        //    var otherColor = (Vector3)PhotonNetwork.otherPlayers[i].CustomProperties["PlayerColor"];
-        //    playerColor = new Color(otherColor.x, otherColor.y, otherColor.z, 1);
-
-        //    var photonViews = GameObject.FindObjectsOfType<PhotonView>();
-        //    for (int j = 0; j < photonViews.Length; j++)
-        //    {
-        //        Debug.Log("<Color=red>OtherPlayer ID: </Color>" + PhotonNetwork.otherPlayers[i].ID);
-        //        Debug.Log("<Color=green>PhotonView Ownr ID: </Color>" + PhotonNetwork.otherPlayers[i].ID);
-        //        if (photonViews[j].ownerId == PhotonNetwork.otherPlayers[i].ID)
-        //        {
-        //            Renderer[] renderers = photonViews[j].GetComponentsInChildren<Renderer>();
-        //            //set the Game objects underneath the Player like the paddle to the players color
-        //            foreach (Renderer r in renderers)
-        //            {
-        //                r.material.color = playerColor;
-        //            }
-        //        }
-        //    }
-        //}
 
         //reset players score to zero
         playerScore = 0;
