@@ -290,6 +290,7 @@ GameObject:
   - component: {fileID: 64215714368231518}
   - component: {fileID: 54185358511079998}
   - component: {fileID: 114383779469769600}
+  - component: {fileID: 114343124708335990}
   m_Layer: 9
   m_Name: BowlPaddle
   m_TagString: Untagged
@@ -749,7 +750,7 @@ MonoBehaviour:
   endPos: {fileID: 4471412490867018}
 --- !u!114 &114343124708335990
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1874418653102846}
