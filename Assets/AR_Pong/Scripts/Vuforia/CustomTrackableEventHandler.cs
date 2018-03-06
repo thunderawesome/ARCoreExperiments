@@ -35,21 +35,9 @@ public class CustomTrackableEventHandler : MonoBehaviour,
 
     protected virtual void OnTrackingFound()
     {
-        var placeHolder = transform.GetChild(0);
-        debugText.text = placeHolder.name;
-        if (placeHolder != null)
-        {
-            debugText.text = placeHolder.transform.position.ToString();
-            Debug.Log(placeHolder.transform.position); // all the location, localPosition, quaternion etc will be available to you
-            DontDestroyOnLoad(gameObject);
-            var go = GameObject.CreatePrimitive(PrimitiveType.Cube);
-            debugText.text += go.name;
-            go.transform.parent = placeHolder.transform;
-            go.transform.position = Vector3.zero;
+        Battlerock.MultiplayerManager.Instance.FindOrCreateAnchor();
 
-            Battlerock.MultiplayerManager.Instance.anchorPoint = placeHolder.transform;
-        }
-
+        debugText.text = "<Color=green>FOUND!</Color>";
 
         // VuforiaBehaviour.Instance.enabled = false;
 
@@ -73,6 +61,8 @@ public class CustomTrackableEventHandler : MonoBehaviour,
 
     protected virtual void OnTrackingLost()
     {
+        debugText.text = "<Color=red>Lost...</Color>";
+
         var rendererComponents = GetComponentsInChildren<Renderer>(true);
         var colliderComponents = GetComponentsInChildren<Collider>(true);
         var canvasComponents = GetComponentsInChildren<Canvas>(true);
