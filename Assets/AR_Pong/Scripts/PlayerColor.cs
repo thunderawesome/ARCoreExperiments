@@ -8,6 +8,7 @@
 using UnityEngine;
 using Photon;
 using ExitGames.Client.Photon;
+using ExitGames.Demos.DemoAnimator;
 
 namespace Battlerock
 {
@@ -21,7 +22,7 @@ namespace Battlerock
     {
 
         #region Private Variables
-        private const string ColorProp = "PlayerColor";
+        private string ColorProp = "PlayerColor";
         #endregion
 
         #region Public Variables
@@ -29,6 +30,8 @@ namespace Battlerock
         /// Color this player selected. Defaults to grey.
         /// </summary>
         public Vector3 MyColor;
+
+        PlayerNameInputField inputField;
         #endregion
 
         #region Public Methods
@@ -38,6 +41,7 @@ namespace Battlerock
         /// </summary>
         public void SetPlayerColor()
         {
+            ColorProp = PhotonNetwork.playerName;
             var currentColor = GetComponent<ColorPicker>().CurrentColor;
             MyColor = new Vector3(currentColor.r, currentColor.g, currentColor.b);
 
