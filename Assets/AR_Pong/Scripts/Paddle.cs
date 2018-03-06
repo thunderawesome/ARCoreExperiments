@@ -5,6 +5,7 @@ namespace Battlerock
 {
     public class Paddle : PunBehaviour
     {
+
         private void Start()
         {
             if (transform.parent.GetComponent<PhotonView>().isMine)
@@ -15,6 +16,7 @@ namespace Battlerock
                 {
                     renderers[i].enabled = false;
                 }
+
             }
         }
     }
