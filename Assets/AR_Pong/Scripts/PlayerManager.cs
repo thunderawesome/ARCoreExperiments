@@ -6,14 +6,17 @@ using Photon;
 
 public class PlayerManager : PunBehaviour
 {
+    #region Public Variables
     public string playerName;
     public Color playerColor;
     public int playerScore;
+    #endregion
 
+    #region Unity Methods
     // Use this for initialization
     public void Start()
     {
-        
+
         if (photonView.isMine)
         {
             Vector3 camPos = GoogleARCore.Experiments.ARController.Instance.FirstPersonCamera.transform.position;
@@ -42,6 +45,17 @@ public class PlayerManager : PunBehaviour
         PhotonNetwork.player.SetCustomProperties(setPlayerScore);
     }
 
+    public void Update()
+    {
+        if (photonView.isMine)
+        {
+            Vector3 camPos = GoogleARCore.Experiments.ARController.Instance.FirstPersonCamera.transform.position;
+            transform.position = new Vector3(camPos.x, camPos.y, camPos.z);
+        }
+    }
+    #endregion
+
+    #region Public Methods
     /// <summary>
     /// up the players score when they get the puck in the opponents goal
     /// </summary>
@@ -62,7 +76,9 @@ public class PlayerManager : PunBehaviour
             SetCustomProperty(new Hashtable() { { "PlayerScore", playerScore } });
         }
     }
+    #endregion
 
+    #region Private Methods
     /// <summary>
     /// Apply a custon property it's new value to the player
     /// </summary>
@@ -71,4 +87,5 @@ public class PlayerManager : PunBehaviour
     {
         PhotonNetwork.player.SetCustomProperties(value);
     }
+    #endregion
 }
