@@ -7,8 +7,11 @@ public class CustomTrackableEventHandler : MonoBehaviour,
     private TrackableBehaviour mTrackableBehaviour;
     public UnityEngine.UI.Text debugText;
 
+    public GameObject uiControls;
+
     void Start()
     {
+        uiControls.SetActive(false);
         mTrackableBehaviour = GetComponent<TrackableBehaviour>();
         if (mTrackableBehaviour)
         {
@@ -35,9 +38,10 @@ public class CustomTrackableEventHandler : MonoBehaviour,
 
     protected virtual void OnTrackingFound()
     {
-        Battlerock.MultiplayerManager.Instance.FindOrCreateAnchor();
-
+        Debug.Log("<Color=green>FOUND!</Color>");
+        uiControls.SetActive(true);
         debugText.text = "<Color=green>FOUND!</Color>";
+        Battlerock.MultiplayerManager.Instance.FindOrCreateAnchor(transform);
 
         // VuforiaBehaviour.Instance.enabled = false;
 
@@ -61,7 +65,10 @@ public class CustomTrackableEventHandler : MonoBehaviour,
 
     protected virtual void OnTrackingLost()
     {
-        debugText.text = "<Color=red>Lost...</Color>";
+        Debug.Log("<Color=red>Scan AR Marker</Color>");
+        debugText.text = "<Color=red>Scan AR Marker</Color>";
+
+        uiControls.SetActive(false);
 
         var rendererComponents = GetComponentsInChildren<Renderer>(true);
         var colliderComponents = GetComponentsInChildren<Collider>(true);

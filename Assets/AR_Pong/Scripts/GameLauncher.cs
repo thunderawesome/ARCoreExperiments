@@ -9,6 +9,7 @@
 // --------------------------------------------------------------------------------------------------------------------
 
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 /// <summary>
@@ -28,6 +29,8 @@ namespace Battlerock
 
         [Tooltip("The UI Loader Anime")]
         public LoaderAnimation loaderAnimation;
+
+        public LEVEL level = LEVEL.PongPreparation;
 
         #endregion
 
@@ -59,7 +62,7 @@ namespace Battlerock
 
             // #Critical
             // this makes sure we can use PhotonNetwork.LoadLevel() on the master client and all clients in the same room sync their level automatically
-            PhotonNetwork.automaticallySyncScene = true;
+            PhotonNetwork.automaticallySyncScene = false;
 
             _GameManager.Instance.gameMode = GameMode.Lobby;
         }
@@ -68,6 +71,15 @@ namespace Battlerock
 
 
         #region Public Methods
+        /// <summary>
+        /// Loads the next level. Assuming the player already joined a photon room.
+        /// </summary>
+        public void StartGame()
+        {
+            //SceneManager.LoadScene(level.ToString());
+            PhotonNetwork.LoadLevel(level.ToString());
+        }
+
 
         /// <summary>
         /// Start the connection process. 
@@ -206,16 +218,29 @@ namespace Battlerock
             LogFeedback("<Color=Green>OnJoinedRoom</Color> with " + PhotonNetwork.room.PlayerCount + " Player(s)");
             Debug.Log(GetType() + ": OnJoinedRoom() called by PUN. Now this client is in a room.\nFrom here on, your game would be running. For reference, all callbacks are listed in enum: PhotonNetworkingMessage");
 
+#if UNITY_EDITOR
+            level = LEVEL.PongGame;
+#endif
+
             // #Critical: We only load if we are the first player, else we rely on  PhotonNetwork.automaticallySyncScene to sync our instance scene.
             if (PhotonNetwork.room.PlayerCount == 1)
             {
                 Debug.Log("We load the 'Room for 1' ");
 
+
+
                 // #Critical
                 // Load the Room Level. 
-                PhotonNetwork.LoadLevel(LEVEL.PongGame.ToString());
+                PhotonNetwork.LoadLevel(level.ToString());
+                //SceneManager.LoadScene(level.ToString());
+            }
+            else
+            {
+                PhotonNetwork.LoadLevel(level.ToString());
             }
         }
+
+
         #endregion
     }
 }

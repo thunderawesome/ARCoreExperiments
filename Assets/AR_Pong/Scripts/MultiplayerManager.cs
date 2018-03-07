@@ -8,10 +8,54 @@ namespace Battlerock
         #region Public Variables
         public static MultiplayerManager Instance;
 
+        public GoogleARCore.Anchor Anchor
+        {
+            get
+            {
+                if (m_anchorPoint == null)
+                {
+                    m_anchorPoint = FindObjectOfType<GoogleARCore.Anchor>();
+
+                    if (m_anchorPoint == null)
+                    {
+                        Debug.Log("<color=red>No Anchor found in scene.</color>");
+                        Pose pose = new Pose
+                        {
+                            position = Vector3.zero,
+                            rotation = Quaternion.identity
+                        };
+                        m_anchorPoint = GoogleARCore.Session.CreateAnchor(pose);
+                        if (m_anchorPoint == null)
+                        {
+                            Debug.LogError("Failed to create an anchor.");
+                            return null;
+                        }
+                        else
+                        {
+                            return m_anchorPoint;
+                        }
+
+                    }
+                    else
+                    {
+                        Debug.Log("<color=green>Found Anchor in scene.</color>");
+                        return m_anchorPoint;
+                    }
+                }
+                else
+                {
+                    Debug.Log("<color=blue>Anchor already exists in scene.</color>");
+                    return m_anchorPoint;
+                }
+            }
+        }
+        #endregion
+
+        #region Private Variables
         /// <summary>
         /// Anchor point used by the player.
         /// </summary>
-        public GoogleARCore.Anchor anchor;
+        private GoogleARCore.Anchor m_anchorPoint;
         #endregion
 
         #region Private Variables
@@ -29,21 +73,20 @@ namespace Battlerock
         #endregion
 
         #region Public Methods
-        public void FindOrCreateAnchor()
+        public void FindOrCreateAnchor(Transform parent = null)
         {
-            if (PhotonNetwork.player.IsMasterClient == true)
+            if (m_placeHolder == null)
             {
-                if (m_placeHolder == null)
-                {
-                    m_placeHolder = PhotonNetwork.Instantiate("Anchor", Vector3.zero, Quaternion.identity, 0);
-                    Debug.Log(m_placeHolder.transform.position); // all the location, localPosition, quaternion etc will be available to you
-                    DontDestroyOnLoad(m_placeHolder);                   
-                }               
-
-                anchor = GoogleARCore.Session.CreateAnchor(new Pose());
-                anchor.ThrowErrorIfNull();
-                anchor.transform.position = m_placeHolder.transform.position;
+                m_placeHolder = PhotonNetwork.Instantiate("Anchor", Vector3.zero, Quaternion.identity, 0);
+                Debug.Log(m_placeHolder.name + " created!");
+                m_placeHolder.transform.parent = parent;
+                m_placeHolder.transform.localPosition = Vector3.zero;
+                DontDestroyOnLoad(m_placeHolder);
+               
             }
+            
+            Anchor.transform.parent = m_placeHolder.transform;
+            Anchor.transform.localPosition = Vector3.zero;
         }
         #endregion
     }
