@@ -5,8 +5,8 @@ namespace Battlerock
     public enum LEVEL
     {
         PongLauncher,
-        PongPreparation,
-        PongGame
+        PongGameVuforia,
+        PongGameARCore
     }
 
     [CreateAssetMenu(menuName = "ScriptableObjects/NetworkSettings")]

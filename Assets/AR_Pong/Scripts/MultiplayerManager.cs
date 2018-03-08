@@ -8,6 +8,8 @@ namespace Battlerock
         #region Public Variables
         public static MultiplayerManager Instance;
 
+        public bool isReady = false;
+
         public GoogleARCore.Anchor Anchor
         {
             get
@@ -84,9 +86,21 @@ namespace Battlerock
                 DontDestroyOnLoad(m_placeHolder);
                
             }
+
+            if (_GameManager.Instance.isARCoreEnabled == true)
+            {
+                Anchor.transform.parent = m_placeHolder.transform;
+                Anchor.transform.localPosition = Vector3.zero;
+            }
+        }
+
+        public void PrepareMultiplayer(Transform parent = null)
+        {
+            if (isReady == true) return;
             
-            Anchor.transform.parent = m_placeHolder.transform;
-            Anchor.transform.localPosition = Vector3.zero;
+            SpawnManager.Instance.SpawnPlayer(parent);
+
+            isReady = true;
         }
         #endregion
     }

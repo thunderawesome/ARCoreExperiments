@@ -41,7 +41,10 @@ public class CustomTrackableEventHandler : MonoBehaviour,
         Debug.Log("<Color=green>FOUND!</Color>");
         uiControls.SetActive(true);
         debugText.text = "<Color=green>FOUND!</Color>";
-        Battlerock.MultiplayerManager.Instance.FindOrCreateAnchor(transform);
+
+        Battlerock.MultiplayerManager.Instance.PrepareMultiplayer(transform);
+
+        //Battlerock.MultiplayerManager.Instance.FindOrCreateAnchor(transform);
 
         // VuforiaBehaviour.Instance.enabled = false;
 

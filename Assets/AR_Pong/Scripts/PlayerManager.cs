@@ -19,8 +19,7 @@ public class PlayerManager : PunBehaviour
 
         if (photonView.isMine)
         {
-            Vector3 camPos = GoogleARCore.Experiments.ARController.Instance.FirstPersonCamera.transform.position;
-            transform.position = new Vector3(camPos.x, camPos.y, camPos.z);
+            SetPosition();
         }
 
         for (int i = 0; i < PhotonNetwork.playerList.Length; i++)
@@ -49,10 +48,9 @@ public class PlayerManager : PunBehaviour
     {
         if (photonView.isMine)
         {
-            Vector3 camPos = GoogleARCore.Experiments.ARController.Instance.FirstPersonCamera.transform.position;
-            transform.position = new Vector3(camPos.x, camPos.y, camPos.z);
+            SetPosition();
         }
-    }
+    }   
     #endregion
 
     #region Public Methods
@@ -79,6 +77,13 @@ public class PlayerManager : PunBehaviour
     #endregion
 
     #region Private Methods
+    private void SetPosition()
+    {
+        Vector3 camPos = Camera.main.transform.position;
+        //Vector3 camPos = GoogleARCore.Experiments.ARController.Instance.FirstPersonCamera.transform.position;
+        transform.position = new Vector3(camPos.x, camPos.y, camPos.z);
+    }
+
     /// <summary>
     /// Apply a custon property it's new value to the player
     /// </summary>

@@ -9,9 +9,19 @@ namespace Battlerock
         public GameObject player;
         public GameObject goal;
         public GameObject puck;
+
+        public static SpawnManager Instance;
         #endregion
 
         #region Unity Methods
+        /// <summary>
+        /// Unity's built-in method (Called before other methods)
+        /// </summary>
+        private void Awake()
+        {
+            Instance = this;
+        }
+
         /// <summary>
         /// Unity's built-in method (Called right after Awake)
         /// </summary>
@@ -20,34 +30,54 @@ namespace Battlerock
             // in case we started this demo with the wrong scene being active, simply load the menu scene
             if (!PhotonNetwork.connected)
             {
-                UnityEngine.SceneManagement.SceneManager.LoadScene(LEVEL.PongGame.ToString());
+                DetectARThenTryToLoadLevel();
+
                 yield return null;
             }
-
-
-
-            _GameManager.Instance.gameMode = GameMode.Playing;
 
 #if !UNITY_EDITOR
-            while (MultiplayerManager.Instance.Anchor == null)
+            if (_GameManager.Instance.isARCoreEnabled == true)
             {
-                yield return null;
+                while (MultiplayerManager.Instance.Anchor == null)
+                {
+                    yield return null;
+                }
             }
-#endif
+#else
             SpawnPlayer();
+#endif
+        }
+
+        private static void DetectARThenTryToLoadLevel()
+        {
+            if (_GameManager.Instance.isVuforiaEnabled == true)
+            {
+                UnityEngine.SceneManagement.SceneManager.LoadScene(LEVEL.PongGameVuforia.ToString());
+            }
+            else if (_GameManager.Instance.isARCoreEnabled == true)
+            {
+                UnityEngine.SceneManagement.SceneManager.LoadScene(LEVEL.PongGameARCore.ToString());
+            }
         }
         #endregion
 
         #region Public Methods
-        public void SpawnPlayer()
+        public void SpawnPlayer(Transform parent = null)
         {
             Vector3 position = Vector3.zero;
-            if(MultiplayerManager.Instance.Anchor != null)
+
+            if (_GameManager.Instance.isARCoreEnabled == true)
             {
-                position = MultiplayerManager.Instance.Anchor.transform.position;
+                if (MultiplayerManager.Instance.Anchor != null)
+                {
+                    position = MultiplayerManager.Instance.Anchor.transform.position;
+                }
             }
 
-            PhotonNetwork.Instantiate(player.name, position, Quaternion.identity, 0);
+            GameObject obj = PhotonNetwork.Instantiate(player.name, position, Quaternion.identity, 0);
+            obj.transform.parent = parent;
+
+            _GameManager.Instance.gameMode = GameMode.Playing;
         }
 
         public void SpawnGoal()
