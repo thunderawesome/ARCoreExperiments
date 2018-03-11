@@ -6,7 +6,8 @@ namespace Battlerock
     {
         PongLauncher,
         PongGameVuforia,
-        PongGameARCore
+        PongGameARCore,
+        PongGame
     }
 
     [CreateAssetMenu(menuName = "ScriptableObjects/NetworkSettings")]

@@ -30,7 +30,7 @@ namespace Battlerock
         [Tooltip("The UI Loader Anime")]
         public LoaderAnimation loaderAnimation;
 
-        public LEVEL level = LEVEL.PongGameVuforia;
+        public LEVEL level = LEVEL.PongGame;
 
         #endregion
 
@@ -69,7 +69,6 @@ namespace Battlerock
 
         #endregion
 
-
         #region Public Methods
         /// <summary>
         /// Loads the next level. Assuming the player already joined a photon room.
@@ -79,7 +78,6 @@ namespace Battlerock
             //SceneManager.LoadScene(level.ToString());
             PhotonNetwork.LoadLevel(level.ToString());
         }
-
 
         /// <summary>
         /// Start the connection process. 
@@ -219,7 +217,7 @@ namespace Battlerock
             Debug.Log(GetType() + ": OnJoinedRoom() called by PUN. Now this client is in a room.\nFrom here on, your game would be running. For reference, all callbacks are listed in enum: PhotonNetworkingMessage");
 
 #if UNITY_EDITOR
-            level = LEVEL.PongGameVuforia;
+            level = LEVEL.PongGame;
 #endif
 
             // #Critical: We only load if we are the first player, else we rely on  PhotonNetwork.automaticallySyncScene to sync our instance scene.

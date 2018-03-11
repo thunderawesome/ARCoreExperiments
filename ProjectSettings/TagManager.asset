@@ -8,6 +8,7 @@ TagManager:
   - Bobber
   - EncyclopediaSlot
   - Text
+  - UI
   layers:
   - Default
   - TransparentFX

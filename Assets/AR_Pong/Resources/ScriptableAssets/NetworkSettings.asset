@@ -13,4 +13,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameVersion: 1
   maxPlayersPerRoom: 4
-  level: 1
+  level: 3

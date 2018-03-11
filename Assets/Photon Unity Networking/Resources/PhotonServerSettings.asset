@@ -43,4 +43,5 @@ MonoBehaviour:
   - RequestForPickupTimes
   - TaggedPlayer
   - CreateAnchor
+  - SetColor
   DisableAutoOpenWizard: 1

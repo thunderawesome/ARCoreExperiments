@@ -9,6 +9,30 @@ public class CustomTrackableEventHandler : MonoBehaviour,
 
     public GameObject uiControls;
 
+    public GameObject UIControls
+    {
+        get
+        {
+            if (uiControls == null)
+            {
+                try
+                {
+                    uiControls = GameObject.FindWithTag("UI");
+                    return uiControls;
+                }
+                catch (System.Exception)
+                {
+
+                    throw new System.Exception("NO UIControls Object assigned in inspector.");
+                }
+            }
+            else
+            {
+                return uiControls;
+            }
+        }
+    }
+
     void Start()
     {
         uiControls.SetActive(false);
@@ -39,14 +63,13 @@ public class CustomTrackableEventHandler : MonoBehaviour,
     protected virtual void OnTrackingFound()
     {
         Debug.Log("<Color=green>FOUND!</Color>");
-        uiControls.SetActive(true);
         debugText.text = "<Color=green>FOUND!</Color>";
 
-        Battlerock.MultiplayerManager.Instance.PrepareMultiplayer(transform);
-
-        //Battlerock.MultiplayerManager.Instance.FindOrCreateAnchor(transform);
-
-        // VuforiaBehaviour.Instance.enabled = false;
+        if(Battlerock.MultiplayerManager.Instance.isReady == false)
+        {
+            Battlerock.MultiplayerManager.Instance.isReady = true;
+            Battlerock.SpawnManager.Instance.SpawnPlayer();
+        }
 
         var rendererComponents = GetComponentsInChildren<Renderer>(true);
         var colliderComponents = GetComponentsInChildren<Collider>(true);
@@ -70,8 +93,6 @@ public class CustomTrackableEventHandler : MonoBehaviour,
     {
         Debug.Log("<Color=red>Scan AR Marker</Color>");
         debugText.text = "<Color=red>Scan AR Marker</Color>";
-
-        uiControls.SetActive(false);
 
         var rendererComponents = GetComponentsInChildren<Renderer>(true);
         var colliderComponents = GetComponentsInChildren<Collider>(true);

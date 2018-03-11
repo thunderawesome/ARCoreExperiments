@@ -30,34 +30,14 @@ namespace Battlerock
             // in case we started this demo with the wrong scene being active, simply load the menu scene
             if (!PhotonNetwork.connected)
             {
-                DetectARThenTryToLoadLevel();
+                UnityEngine.SceneManagement.SceneManager.LoadScene(NetworkSettings.Instance.level.ToString());
 
                 yield return null;
             }
 
-#if !UNITY_EDITOR
-            if (_GameManager.Instance.isARCoreEnabled == true)
-            {
-                while (MultiplayerManager.Instance.Anchor == null)
-                {
-                    yield return null;
-                }
-            }
-#else
+#if UNITY_EDITOR
             SpawnPlayer();
 #endif
-        }
-
-        private static void DetectARThenTryToLoadLevel()
-        {
-            if (_GameManager.Instance.isVuforiaEnabled == true)
-            {
-                UnityEngine.SceneManagement.SceneManager.LoadScene(LEVEL.PongGameVuforia.ToString());
-            }
-            else if (_GameManager.Instance.isARCoreEnabled == true)
-            {
-                UnityEngine.SceneManagement.SceneManager.LoadScene(LEVEL.PongGameARCore.ToString());
-            }
         }
         #endregion
 
@@ -65,14 +45,6 @@ namespace Battlerock
         public void SpawnPlayer(Transform parent = null)
         {
             Vector3 position = Vector3.zero;
-
-            if (_GameManager.Instance.isARCoreEnabled == true)
-            {
-                if (MultiplayerManager.Instance.Anchor != null)
-                {
-                    position = MultiplayerManager.Instance.Anchor.transform.position;
-                }
-            }
 
             GameObject obj = PhotonNetwork.Instantiate(player.name, position, Quaternion.identity, 0);
             obj.transform.parent = parent;

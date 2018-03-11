@@ -3,94 +3,116 @@ using System.Collections.Generic;
 using UnityEngine;
 using ExitGames.Client.Photon;
 using Photon;
+using Vuforia;
+using GoogleARCore;
 
-public class PlayerManager : PunBehaviour
+namespace Battlerock
 {
-    #region Public Variables
-    public string playerName;
-    public Color playerColor;
-    public int playerScore;
-    #endregion
 
-    #region Unity Methods
-    // Use this for initialization
-    public void Start()
+    public class PlayerManager : PunBehaviour
     {
+        #region Public Variables
+        public string playerName;
+        public Color playerColor;
+        public int playerScore;
+        #endregion
 
-        if (photonView.isMine)
+        #region Unity Methods
+        // Use this for initialization
+        public void Start()
         {
-            SetPosition();
+            if (photonView.isMine)
+            {
+                SetPosition();
+            }
+
+            for (int i = 0; i < MultiplayerManager.Instance.NumberOfPlayers; i++)
+            {
+                if (PhotonNetwork.playerList[i].ID == photonView.owner.ID)
+                {
+                    playerName = PhotonNetwork.playerList[i].NickName;
+                }
+            }
+
+            if (photonView.isMine == true)
+            {
+                playerColor = ES3.Load<Color>(PhotonNetwork.playerName);
+                photonView.RPC("SetColor", PhotonTargets.AllBuffered, playerColor.r, playerColor.g, playerColor.b);
+            }
+
+
+            //reset players score to zero
+            playerScore = 0;
+            Hashtable setPlayerScore = new Hashtable() { { "PlayerScore", playerScore } };
+            PhotonNetwork.player.SetCustomProperties(setPlayerScore);
         }
 
-        for (int i = 0; i < PhotonNetwork.playerList.Length; i++)
+        public void Update()
         {
-            if (PhotonNetwork.playerList[i].ID == photonView.owner.ID)
+            if (photonView.isMine)
             {
-                playerName = PhotonNetwork.playerList[i].NickName;
-                var col = (Vector3)PhotonNetwork.playerList[i].CustomProperties[playerName];
-                playerColor = new Color(col.x, col.y, col.z, 1);
-
-                //set the Game objects underneath the Player like the paddle to the players color
-                foreach (Renderer r in GetComponentsInChildren<Renderer>())
-                {
-                    r.material.color = playerColor;
-                }
+                SetPosition();
             }
         }
 
-        //reset players score to zero
-        playerScore = 0;
-        Hashtable setPlayerScore = new Hashtable() { { "PlayerScore", playerScore } };
-        PhotonNetwork.player.SetCustomProperties(setPlayerScore);
-    }
-
-    public void Update()
-    {
-        if (photonView.isMine)
+        /// <summary>
+        /// Updates the color across the network so all players can see which color the other players are.
+        /// </summary>
+        /// <param name="r">Red</param>
+        /// <param name="g">Green</param>
+        /// <param name="b">Blue</param>
+        [PunRPC]
+        public void SetColor(float r, float g, float b)
         {
-            SetPosition();
+            //set the Game objects underneath the Player like the paddle to the players color
+            foreach (Renderer rend in GetComponentsInChildren<Renderer>())
+            {
+                rend.material.color = new Color(r, g, b, 1);
+            }
         }
-    }   
-    #endregion
+        #endregion
 
-    #region Public Methods
-    /// <summary>
-    /// up the players score when they get the puck in the opponents goal
-    /// </summary>
-    public void AddScore()
-    {
-        playerScore++;
-        SetCustomProperty(new Hashtable() { { "PlayerScore", playerScore } });
-    }
-
-    /// <summary>
-    /// Reduce the players score for when they score on themselves
-    /// </summary>
-    public void ReduceScore()
-    {
-        if (playerScore > 0)
+        #region Public Methods
+        /// <summary>
+        /// up the players score when they get the puck in the opponents goal
+        /// </summary>
+        public void AddScore()
         {
-            playerScore--;
+            playerScore++;
             SetCustomProperty(new Hashtable() { { "PlayerScore", playerScore } });
         }
-    }
-    #endregion
 
-    #region Private Methods
-    private void SetPosition()
-    {
-        Vector3 camPos = Camera.main.transform.position;
-        //Vector3 camPos = GoogleARCore.Experiments.ARController.Instance.FirstPersonCamera.transform.position;
-        transform.position = new Vector3(camPos.x, camPos.y, camPos.z);
-    }
+        /// <summary>
+        /// Reduce the players score for when they score on themselves
+        /// </summary>
+        public void ReduceScore()
+        {
+            if (playerScore > 0)
+            {
+                playerScore--;
+                SetCustomProperty(new Hashtable() { { "PlayerScore", playerScore } });
+            }
+        }
+        #endregion
 
-    /// <summary>
-    /// Apply a custon property it's new value to the player
-    /// </summary>
-    /// <param name="value"></param> Hashtable of { "PropertyName", propertyValue }
-    private void SetCustomProperty(Hashtable value)
-    {
-        PhotonNetwork.player.SetCustomProperties(value);
+        #region Private Methods
+        /// <summary>
+        /// Sets the local player's position to the local player's ARCamera Device location.
+        /// </summary>
+        private void SetPosition()
+        {
+            Vector3 camPos = Camera.main.transform.position;
+            transform.position = new Vector3(camPos.x, camPos.y, camPos.z);
+        }
+
+        /// <summary>
+        /// Apply a custon property it's new value to the player
+        /// </summary>
+        /// <param name="value"></param> Hashtable of { "PropertyName", propertyValue }
+        private void SetCustomProperty(Hashtable value)
+        {
+            PhotonNetwork.player.SetCustomProperties(value);
+        }
+        #endregion
     }
-    #endregion
 }
