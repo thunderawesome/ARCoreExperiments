@@ -48,8 +48,8 @@ namespace Battlerock
 
             GameObject obj = PhotonNetwork.Instantiate(player.name, position, Quaternion.identity, 0);
             obj.transform.parent = parent;
-
-            _GameManager.Instance.gameMode = GameMode.Playing;
+            _GameManager.Instance.gameMode = GameMode.Preparation;
+            MultiplayerManager.Instance.isReady = true;
         }
 
         public void SpawnGoal()
@@ -57,9 +57,11 @@ namespace Battlerock
 
         }
 
-        public void SpawnPuck()
+        public void SpawnPuck(Transform parent = null)
         {
-
+            GameObject obj = PhotonNetwork.Instantiate(puck.name, Vector3.zero, Quaternion.identity, 0);
+            obj.transform.parent = parent;
+            _GameManager.Instance.gameMode = GameMode.Playing;
         }
         #endregion
     }

@@ -67,9 +67,14 @@ public class CustomTrackableEventHandler : MonoBehaviour,
 
         if(Battlerock.MultiplayerManager.Instance.isReady == false)
         {
-            Battlerock.MultiplayerManager.Instance.isReady = true;
+            if (Battlerock.MultiplayerManager.Instance.NumberOfPlayers > 1)
+            {
+                Battlerock.SpawnManager.Instance.SpawnPuck();
+            }
             Battlerock.SpawnManager.Instance.SpawnPlayer();
         }
+
+
 
         var rendererComponents = GetComponentsInChildren<Renderer>(true);
         var colliderComponents = GetComponentsInChildren<Collider>(true);
