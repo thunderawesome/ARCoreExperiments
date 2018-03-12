@@ -12,6 +12,8 @@
         #region Private Variables
         private Rigidbody m_rigidbody;
         private Color m_color;
+
+        Vector3 m_oldVelocity;
         #endregion
 
         #region Unity Methods
@@ -25,6 +27,16 @@
         {
             if (collision.gameObject.tag == "Player")
             {
+                ContactPoint cp = collision.contacts[0];
+                // calculate with addition of normal vector
+                // myRigidbody.velocity = oldVel + cp.normal*2.0f*oldVel.magnitude;
+
+                // calculate with Vector3.Reflect
+                m_rigidbody.velocity = Vector3.Reflect(m_oldVelocity, cp.normal);
+
+                // bumper effect to speed up ball
+                m_rigidbody.velocity += cp.normal * 2.0f;
+
                 m_color = collision.gameObject.GetComponent<PlayerManager>().playerColor;
                 photonView.RPC("SetColor", PhotonTargets.AllBuffered, m_color.r, m_color.g, m_color.b);
             }
