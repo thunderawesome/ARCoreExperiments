@@ -234,6 +234,7 @@ namespace Battlerock
             }
             else
             {
+                MultiplayerManager.Instance.otherPlayer = PhotonNetwork.playerList[1];
                 PhotonNetwork.LoadLevel(level.ToString());
             }
         }

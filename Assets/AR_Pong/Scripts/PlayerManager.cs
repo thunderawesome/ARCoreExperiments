@@ -30,9 +30,10 @@ namespace Battlerock
         {
             m_rigidbody = GetComponent<Rigidbody>();
 
+            MultiplayerManager.Instance.localPlayer = PhotonNetwork.player;
+
             InitializeInput();
 
-            MultiplayerManager.Instance.localPlayer = PhotonNetwork.player;
 
             for (int i = 0; i < MultiplayerManager.Instance.NumberOfPlayers; i++)
             {
@@ -152,8 +153,16 @@ namespace Battlerock
             Actions.Left.AddDefaultBinding(Key.LeftArrow);
             Actions.Right.AddDefaultBinding(Key.RightArrow);
 
-            Actions.Left.AddDefaultBinding(InputControlType.LeftStickLeft);
-            Actions.Right.AddDefaultBinding(InputControlType.LeftStickRight);
+            if (MultiplayerManager.Instance.localPlayer.IsMasterClient == true)
+            {
+                Actions.Left.AddDefaultBinding(InputControlType.LeftStickRight);
+                Actions.Right.AddDefaultBinding(InputControlType.LeftStickLeft);
+            }
+            else
+            {
+                Actions.Left.AddDefaultBinding(InputControlType.LeftStickLeft);
+                Actions.Right.AddDefaultBinding(InputControlType.LeftStickRight);
+            }
         }
         #endregion
     }
