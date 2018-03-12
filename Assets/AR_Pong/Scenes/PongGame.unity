@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44300637, g: 0.4921953, b: 0.5719249, a: 1}
+  m_IndirectSpecularColor: {r: 0.44300628, g: 0.4921953, b: 0.57192475, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -261,41 +261,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 324639690}
---- !u!1 &325711486 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1307112288854488, guid: 5a83e8b7832a0ce40a66db9648519591,
-    type: 2}
-  m_PrefabInternal: {fileID: 1551983614}
---- !u!65 &325711487 stripped
-BoxCollider:
-  m_PrefabParentObject: {fileID: 65533985056581808, guid: 5a83e8b7832a0ce40a66db9648519591,
-    type: 2}
-  m_PrefabInternal: {fileID: 1551983614}
---- !u!54 &325711488 stripped
-Rigidbody:
-  m_PrefabParentObject: {fileID: 54483880655013334, guid: 5a83e8b7832a0ce40a66db9648519591,
-    type: 2}
-  m_PrefabInternal: {fileID: 1551983614}
---- !u!65 &325711489 stripped
-BoxCollider:
-  m_PrefabParentObject: {fileID: 65288407689011326, guid: 5a83e8b7832a0ce40a66db9648519591,
-    type: 2}
-  m_PrefabInternal: {fileID: 1551983614}
---- !u!23 &325711490 stripped
-MeshRenderer:
-  m_PrefabParentObject: {fileID: 23179144653875536, guid: 5a83e8b7832a0ce40a66db9648519591,
-    type: 2}
-  m_PrefabInternal: {fileID: 1551983614}
---- !u!65 &325711491 stripped
-BoxCollider:
-  m_PrefabParentObject: {fileID: 65137588584333564, guid: 5a83e8b7832a0ce40a66db9648519591,
-    type: 2}
-  m_PrefabInternal: {fileID: 1551983614}
---- !u!33 &325711492 stripped
-MeshFilter:
-  m_PrefabParentObject: {fileID: 33571690198117648, guid: 5a83e8b7832a0ce40a66db9648519591,
-    type: 2}
-  m_PrefabInternal: {fileID: 1551983614}
 --- !u!1 &404353673
 GameObject:
   m_ObjectHideFlags: 0
@@ -463,10 +428,25 @@ GameObject:
   m_PrefabInternal: {fileID: 1551983614}
 --- !u!4 &415004059 stripped
 Transform:
+<<<<<<< HEAD
   m_PrefabParentObject: {fileID: 4434569965363674, guid: 5a83e8b7832a0ce40a66db9648519591,
     type: 2}
   m_PrefabInternal: {fileID: 1551983614}
 --- !u!114 &415004060 stripped
+=======
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 415004058}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.030000001, z: -0.35}
+  m_LocalScale: {x: 1, y: 0.000100000005, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1656976639}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &415004060
+>>>>>>> Pong-TowerDefense
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114587166230246226, guid: 5a83e8b7832a0ce40a66db9648519591,
     type: 2}
@@ -665,7 +645,7 @@ MonoBehaviour:
   mPreserveChildSize: 0
   mInitializedInEditor: 1
   mDataSetPath: Vuforia/Pong.xml
-  mExtendedTracking: 1
+  mExtendedTracking: 0
   mAspectRatio: 1
   mImageTargetType: 0
   mWidth: 1
@@ -680,7 +660,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1551983615}
+  - {fileID: 1656976639}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: -7.4880004, y: 0, z: 0}
@@ -691,10 +671,25 @@ GameObject:
   m_PrefabInternal: {fileID: 1551983614}
 --- !u!4 &555536544 stripped
 Transform:
+<<<<<<< HEAD
   m_PrefabParentObject: {fileID: 4399491007639268, guid: 5a83e8b7832a0ce40a66db9648519591,
     type: 2}
   m_PrefabInternal: {fileID: 1551983614}
 --- !u!114 &555536545 stripped
+=======
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 555536543}
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: -0.00000004371139}
+  m_LocalPosition: {x: 0, y: 0.030000001, z: 0.35}
+  m_LocalScale: {x: 1, y: 0.000100000005, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1656976639}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &555536545
+>>>>>>> Pong-TowerDefense
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114410443589338918, guid: 5a83e8b7832a0ce40a66db9648519591,
     type: 2}
@@ -1444,7 +1439,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1282565799}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.991803, y: -3, z: 0}
+  m_LocalPosition: {x: -10.983194, y: -3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 406335091}
@@ -1570,7 +1565,7 @@ RectTransform:
 GameObject:
   m_PrefabParentObject: {fileID: 114654, guid: f773d1fa10a4f4e0d88490eab5d5b46d, type: 2}
   m_PrefabInternal: {fileID: 1069756245}
---- !u!1001 &1551983614
+--- !u!1001 &1656976638
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -1583,7 +1578,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4077681695642332, guid: 5a83e8b7832a0ce40a66db9648519591, type: 2}
       propertyPath: m_LocalPosition.y
+<<<<<<< HEAD
       value: 0
+=======
+      value: 0.25
+>>>>>>> Pong-TowerDefense
       objectReference: {fileID: 0}
     - target: {fileID: 4077681695642332, guid: 5a83e8b7832a0ce40a66db9648519591, type: 2}
       propertyPath: m_LocalPosition.z
@@ -1591,7 +1590,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4077681695642332, guid: 5a83e8b7832a0ce40a66db9648519591, type: 2}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 4077681695642332, guid: 5a83e8b7832a0ce40a66db9648519591, type: 2}
       propertyPath: m_LocalRotation.y
@@ -1608,15 +1607,30 @@ Prefab:
     - target: {fileID: 4077681695642332, guid: 5a83e8b7832a0ce40a66db9648519591, type: 2}
       propertyPath: m_RootOrder
       value: 0
+<<<<<<< HEAD
+=======
+      objectReference: {fileID: 0}
+    - target: {fileID: 4077681695642332, guid: 5a83e8b7832a0ce40a66db9648519591, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4077681695642332, guid: 5a83e8b7832a0ce40a66db9648519591, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 4077681695642332, guid: 5a83e8b7832a0ce40a66db9648519591, type: 2}
+      propertyPath: m_LocalScale.z
+      value: 10
+>>>>>>> Pong-TowerDefense
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5a83e8b7832a0ce40a66db9648519591, type: 2}
   m_IsPrefabParent: 0
---- !u!4 &1551983615 stripped
+--- !u!4 &1656976639 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4077681695642332, guid: 5a83e8b7832a0ce40a66db9648519591,
     type: 2}
-  m_PrefabInternal: {fileID: 1551983614}
+  m_PrefabInternal: {fileID: 1656976638}
 --- !u!43 &1689280946
 Mesh:
   m_ObjectHideFlags: 0
@@ -1849,10 +1863,25 @@ GameObject:
   m_PrefabInternal: {fileID: 1551983614}
 --- !u!4 &1720111312 stripped
 Transform:
+<<<<<<< HEAD
   m_PrefabParentObject: {fileID: 4449121979656116, guid: 5a83e8b7832a0ce40a66db9648519591,
     type: 2}
   m_PrefabInternal: {fileID: 1551983614}
 --- !u!114 &1720111313 stripped
+=======
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1720111311}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.030000001, z: 0}
+  m_LocalScale: {x: 1, y: 0.000100000005, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1656976639}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1720111313
+>>>>>>> Pong-TowerDefense
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114574953623276338, guid: 5a83e8b7832a0ce40a66db9648519591,
     type: 2}
@@ -1946,9 +1975,10 @@ MonoBehaviour:
   openReferences: 0
   openPrefabs: 0
   idRef:
-    _Keys: 9a75b00c9d3364234e032795d4872c55f88c6e8ad049af1aef91e14ed07cc91288f02faf8a5ee64594c285d8fc522d422f2180fd3f7797529a004b89b566470896ea1aad837f824aa1b2f62df6c87c42f7e10247c763ca7f594495ddda66c2216537ce2949f5be71e79eff78c104e21ba606f3d78be046754f527cacc878091335a8d282f9889f23c604ac102716c61b0bbc9ed261b5e777fdd9a83804c92e0b9dfbdb2ed3071e3eef4f89a2bd04a339ab5dfb708cbf1b40f32959354b67fa79eaa3797ba63d872eedbe290ed6d7a33d1b8020308239ee15e77ea74fae5bc61dc2b7333424852317bd84afa4c21dae090fd7dc9a15553f07203eb88de7fdf429ff5aa1ceea7971236f08f2e2b1bbab115f69962074c829134a712a0d8f62761eeb594d1f930ca201cbbacec935f7ce0c0ab89c26926e4c1f8fb77f34199b7e712e534e850f5d1f51744ebd9a5b975f6802e28cc47c119c5c2cfad10efd45e278b97ff36563c8537347814da814a14314e379052798c3534bf331878b3f175a19f7c3b24d7d41da12c605caa4aa60af77ee02958884f9d26078cf4de9b4ed675944b8218f091c9b5a6708bd21474d1d53a956d828cb4881518205d412c84188206dd261cba7fd954154139e533ae41e36b1b8ea5ddad92f65db0b0f2a3c670f57b4a982f312393572a5203d6d6ea722192bc8029d05211015870a4e9b0fce771e9281e9338989eb67e2b36077df50763b8505dca15741df2d3b03dd46c2bf5d0dc376f209372e5d6545fdc064c9cf365909a2c8bce5ba8e2bc08a2801b0a8b1253dae78bdeee5e80a6f50417b48a2d6193e353bc81e8da81fea36222cb869494bfa0fc1298b981f109b6d7fe263fe7d608aa1dc229ee59177aa877e187080297e145005d4f92a69623f225bbfd3714f72dfaaabd0d9c97579fa7024b69ff4a7392e5c87a42a0b10173fce8931f438fd2383ef3c271f1e262422a84d54ff5e5127602a4905668770022d9a0d01e9939f1e4d7c684af449e70605a2a4da5a76584104dbc10ade6f3d5ec3477095ed90f41bdb92bca456ff3a31d7c59153a60f2a31cf77501a901f875937ede149dfa6f935fc04867437d1cc6e77f845d300d5945247f407911727560f6948e11d38979a464e980ed30e559d7dbe45212136aeb0477c67973d919e6442531f820ae0210b0539ffb2df9ee6a172799ff9d995b8ab549b01a04278bc52545e0e212fb7b6db4b423fe5efbb960d267f902b10d8c2e111bf0e3b715dc77f52629f043d5e753f42cc2f6a2814a2cb10a285f4f9f5836644e7f0be6049572310a3a485fe287c22314e765f86824c547a7a673231d9b8455831819f87e970fc446f406967d1e407372e6dbd48f71fdf3fb2ce99dc392c2777557cc4339360b31461d4b97dde7397129ffc328c4008c262552616500657b77bde95ae530693a01bf445857ba017fd4e868c3916da2f3f27a4a51e1999b84a453801fda6eb51ef4f84bfc656e3f2a27bccbc6e1ff070c666cdaf50ac7ff20b5b3d394ab6cbf4530257f585f920afed0ad86ec8ec39583a6cc0c90e5ee21b5c7ae8432322edae962a6b23182256e15f61117861dff00f003c500692a907a46b2d8962e1fd580cab7681beb1e7b7b6920288f833c6eb47f044463ebe0faa75810a5d282bc267ea0b0e6578cc6c539d5a5530c6daa6ac5a1d1b2159655b4c8afc6e071a3aac259e7945516e60098995fb7f577306f850cf5876fb82d32d83303f6646d809d9fe73044b469fefc2748ac0173c3e52424523884f2d037092ad5ea87b9269ea3cfe798a385ac54aac8f5c9b0e1984aa1c4b6e911075e14c14b2e1370df8b40c211a1db34adb3267d728e5413c7a51dfc1108ab27b71352fdd5f6c855c15e7bb48cb4a335521c7e8c98540605c887fbdfed38f7e3c04d028389c42354e3fe3e9791495c919dd2d1de708988f5cf82d97c08d1b623acde28e50523987435f701f147819536027045f244be613791606ebc3428f922892184982de35973efae6771cb256b671449dac515df2cc5b507507d05b51ab6378389d5c67fca96748fcd09c44064671b575bc7233407c2f90821f3a9d94e86ed08c13b06542474aacdef22fd9f2282175b6564a0a2be12d4dbb6dc665c26c6efa6677ff22a6fb249a70e04efd5dfd38a5eea665ee8727213c5b9a8d430d7b66af39d4a6d6c0d5037b18aab00479f02b82edd42781a10c6c4ac2d58430c5b069f4c8a34d58834879906cc6e9f737d156a45d62c83e401719440b03886852bb0159e989118ed8022a92318949df4d836207e188b92d02250de0732895eede8364246a9f51a87b2c06634350f76e193e52ea76b1fe409a850cf20b4e207e81a86895cd99d6bb9da159330195d4bc406c146633e40e5d050d4301921480c9365842f1b09d65a2011a292317c6aa0560c15d976047be1b79b271c0ee3c3d6cca0338d08c76c37624a24021e74301c177df7fd973119b80a5816e392991c16472432934741e30ddbd6f76117ca89541f7d1248a91e86a97128959a6fd5ab9b91b2e562839a7d4ca18524c015d7b15c26b076e2f70e4e1d4a1a8769d57d7b18787c85d81f9eea945c3d31c627886b53ee8b130664d6e955c49e17949521ade2c70861a05fc70f3d2e042002bceb096020ea823
+    _Keys: 9a75b00c9d336423a3c17060509105324e032795d4872c55f88c6e8ad049af1aef91e14ed07cc91288f02faf8a5ee64594c285d8fc522d422f2180fd3f7797529a004b89b566470896ea1aad837f824aa1b2f62df6c87c42f7e10247c763ca7f594495ddda66c2216537ce2949f5be71e79eff78c104e21ba606f3d78be046754f527cacc878091335a8d282f9889f23c604ac102716c61b0bbc9ed261b5e777fdd9a83804c92e0b9dfbdb2ed3071e3eef4f89a2bd04a339ab5dfb708cbf1b40f32959354b67fa79eaa3797ba63d872eedbe290ed6d7a33d1b8020308239ee15e77ea74fae5bc61dc2b7333424852317bd84afa4c21dae090fd7dc9a15553f07203eb88de7fdf429ff5aa1ceea7971236f08f2e2b1bbab115f69962074c829134a712a0d8f62761eeb594d1f930ca201cbbacec935f7ce0c0ab89c26926e4c1f8fb77f34199b7e712e534e850f5d1f51744ebd9a5b975f6802e28cc47c119c5c2cfad10efd45e278b97ff36563c8537347814da814a14314e379052798c3534bf331878b3f175a19f7c3b24d7d41da12c605caa4aa60af77ee02958884f9d26078cf4de9b4ed675944b8218f091c9b5a6708bd21474d1d53a956d828cb4881518205d412c84188206dd261cba7fd954154139e533ae41e36b1b8ea5ddad92f65db0b0f2a3c670f57b4a982f312393572a5203d6d6ea722192bc8029d05211015870a4e9b0fce771e9281e9338989eb67e2b36077df50763b8505dca15741df2d3b03dd46c2bf5d0dc376f209372e5d6545fdc064c9cf3659baad87a96fc98360408cbf80ae43f54809a2c8bce5ba8e2bc08a2801b0a8b1253dae78bdeee5e80a6f50417b48a2d6193e353bc81e8da81fea36222cb869494bfa0fc1298b981f109b6d7fe263fe7d608aa1dc229ee59177aa877e187080297e145005d4f92a69623f225bbfd3714f72dfaaabd0d9c97579fa7024b69ff4a7392e5c87a42a0b10173fce8931f438fd2383ef3c271f1e262422a84d54ff5e5127602a4905668770022d9a0d01e9939f1e4d7c684af449e70605a2a4da5a76584104dbc10ade6f3d5ec3477095ed90f41b540f06254737805ddb92bca456ff3a31d7c59153a60f2a31cf77501a901f875937ede149dfa6f935fc04867437d1cc6e77f845d300d5945247f407911727560f6948e11d38979a464e980ed30e559d7dbe45212136aeb0477c67973d919e6442531f820ae0210b0539ffb2df9ee6a172799ff9d995b8ab549b01a04278bc52545e0e212fb7b6db4b423fe5efbb960d26fd67212ce9de6b597f902b10d8c2e111bf0e3b715dc77f52629f043d5e753f42cc2f6a2814a2cb10a285f4f9f5836644e7f0be6049572310a3a485fe287c22314e765f86824c547a7a673231d9b8455831819f87e970fc446f406967d1e407372e6dbd48f71fdf3fb2ce99dc392c2777557cc4339360b31461d4b97dde7397129ffc328c4008c262552616500657b77bde95ae530693a01bf445857ba017fd4e868c3916da2f3f27a4a51e1999b84a453801fda6eb51ef4f84bfc656e3f2a27bccbc6e1ff070c666cdaf50ac7ff20b5b3d394ab6cbf4530257f585f920afed0ad86ec8ec39583a6cc0c90e5ee21b5c7ae8432322edae962a6b23182256e15f61117861dff00f003c500692a907a46b2d8962e1fd580cab7681beb1e7b7b6920288f833c6eb47f044463ebe0faa75810a5d282bc267ea0b0e6578cc6c539d5a5530c6daa6ac5a1d1b2159655b4c8afc6e071a3aac259e7945516e60098995fb7f577306f850cf5876f3697d9736f5be78fb82d32d83303f66c897fb255b5cad4d46d809d9fe73044bb01d86f86a493912bf127fc67562ef17469fefc2748ac0173c3e52424523884f2d037092ad5ea87b9269ea3cfe798a385ac54aac8f5c9b0e1984aa1c4b6e911075e14c14b2e1370df8b40c211a1db34adb3267d728e5413c7a51dfc1108ab27b71352fdd5f6c855c15e7bb48cb4a3355020403f280e43c0e90e81b2b7d35776461da992dad97e8303163d335655cff6ac2f6a6e50c7d042a960a778d1a1c4545171e1b00af8f5569430c4c9bd7bf0a6580da5df4af6b565a0d47b652b8877a6621c7e8c98540605c887fbdfed38f7e3c04d028389c42354e3fe3e9791495c9196b34a72a6d651c44dd2d1de708988f5cf82d97c08d1b623acde28e50523987435f701f147819536027045f244be613791606ebc3428f922892184982de35973efae6771cb256b671449dac515df2cc5b507507d05b51ab6378389d5c67fca96748fcd09c44064671b575bc7233407c2f90821f3a9d94e86ed08c13b06542474aacdef22fd9f22821e585b021b4177a1909296f1861ecaf01b00d56ebd3abb66b9037c1128c65b47675b6564a0a2be12d3c20075015f300174dbb6dc665c26c6efa6677ff22a6fb249a70e04efd5dfd38a5eea665ee8727213c5b9a8d430d7b66af39d4a6d6c0d5037b18aab00479f02b82edd42781a10c6c4ac2d58430c5b069f4c8a34d58834879906cc6e9f737d156a45d62c83e401719440b03886852bb0159e989118ed8022a92318949df4d836207e188b92d02250de0732895eede8364246a9f51a87b2c06634350f76e193e52ea76b1fe409a850cf20b4e207e81a86895cd99d6bb9da159330195d4bc406c146633e40e5d050d4301921480c9365842f1b09d65a2011a292317c6aa0560c15d976047be1b79b2718f39bcf5ccb4892ec0ee3c3d6cca0338072236e42f8e484a220bed86667c010428be7be8d410cc6e5d84438df5d9055163017c575de9d86ba0848e4a77650450
     _Values:
     - {fileID: 1700607735}
+    - {fileID: 0}
     - {fileID: 33783614071556936, guid: 78c93d9109ec0e741846021df7c7e829, type: 2}
     - {fileID: 33314752553770540, guid: e99669075e66da14eb1cee1531423104, type: 2}
     - {fileID: 513277815}
@@ -2018,6 +2048,8 @@ MonoBehaviour:
     - {fileID: 1971451078693796, guid: 79d112f16e4ac204e9ba413a9fbd2f84, type: 2}
     - {fileID: 1345025884000686, guid: 78c93d9109ec0e741846021df7c7e829, type: 2}
     - {fileID: 12800000, guid: 954746d370bc8934299c8c8267543f4f, type: 3}
+    - {fileID: 0}
+    - {fileID: 0}
     - {fileID: 1700607732}
     - {fileID: 1700607737}
     - {fileID: 1700607736}
@@ -2042,6 +2074,7 @@ MonoBehaviour:
     - {fileID: 513277812}
     - {fileID: 1195490702}
     - {fileID: 745406601}
+    - {fileID: 0}
     - {fileID: 565645522}
     - {fileID: 565645525}
     - {fileID: 565645524}
@@ -2059,6 +2092,7 @@ MonoBehaviour:
     - {fileID: 1195490700}
     - {fileID: 1195490703}
     - {fileID: 1195490701}
+    - {fileID: 0}
     - {fileID: 2100000, guid: 0a02328e96240b94781f4e72d27eb1fc, type: 2}
     - {fileID: 4300000, guid: 072e3e665ba4e5442b3f7d0126f8ebb1, type: 3}
     - {fileID: 13400000, guid: 9656097fa7a682e46bce2bda8649625b, type: 2}
@@ -2103,8 +2137,15 @@ MonoBehaviour:
     - {fileID: 23621941891312412, guid: 3b23d83eabc7a8748b4399c8c7c6fd2b, type: 2}
     - {fileID: 114446371160792708, guid: 3b23d83eabc7a8748b4399c8c7c6fd2b, type: 2}
     - {fileID: 4359168969695502, guid: 3b23d83eabc7a8748b4399c8c7c6fd2b, type: 2}
+    - {fileID: 0}
     - {fileID: 33196340608694486, guid: 79d112f16e4ac204e9ba413a9fbd2f84, type: 2}
     - {fileID: 0}
+<<<<<<< HEAD
+=======
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+>>>>>>> Pong-TowerDefense
     - {fileID: -806885394, guid: 89f0137620f6af44b9ba852b4190e64e, type: 3}
     - {fileID: -667331979, guid: 89f0137620f6af44b9ba852b4190e64e, type: 3}
     - {fileID: 11500000, guid: 64179f3720bbfe947b7724caa67b7c1d, type: 3}
@@ -2117,10 +2158,21 @@ MonoBehaviour:
     - {fileID: 11500000, guid: e6c474df4ff4c4f5bbabeb9f44d56014, type: 3}
     - {fileID: 11500000, guid: a30b9cff3f6704d4ca72a972080dfd8a, type: 3}
     - {fileID: 2180264, guid: 715b80e429c437e40867928a4e1fc975, type: 2}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
     - {fileID: 4800000, guid: cafd18099dfc0114896e0a8b277b81b6, type: 3}
     - {fileID: 2846298, guid: 715b80e429c437e40867928a4e1fc975, type: 2}
     - {fileID: 747298676}
     - {fileID: 415004060}
+    - {fileID: 0}
     - {fileID: 406335091}
     - {fileID: 406335090}
     - {fileID: 406335089}
@@ -2137,7 +2189,12 @@ MonoBehaviour:
     - {fileID: 555536543}
     - {fileID: 555536544}
     - {fileID: 555536545}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
     - {fileID: 747298675}
+    - {fileID: 0}
     - {fileID: 10912, guid: 0000000000000000f000000000000000, type: 0}
     - {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
     - {fileID: 406335088}
@@ -2162,29 +2219,23 @@ MonoBehaviour:
     - {fileID: 114613499396863702, guid: 79d112f16e4ac204e9ba413a9fbd2f84, type: 2}
     - {fileID: 0}
     - {fileID: 0}
+<<<<<<< HEAD
     - {fileID: 136776818773078346, guid: 79d112f16e4ac204e9ba413a9fbd2f84, type: 2}
     - {fileID: 136428962255504806, guid: 79d112f16e4ac204e9ba413a9fbd2f84, type: 2}
+=======
+    - {fileID: 0}
+    - {fileID: 0}
+>>>>>>> Pong-TowerDefense
     - {fileID: 11500000, guid: f1d8cbb52e5a57e4e9a7bd996c4f6c5f, type: 3}
     - {fileID: 11500000, guid: 0f430d2b70e50074d834d03257fa1e9d, type: 3}
+    - {fileID: 0}
     - {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
-    - {fileID: 33571690198117648, guid: 5a83e8b7832a0ce40a66db9648519591, type: 2}
-    - {fileID: 325711492}
-    - {fileID: 325711491}
-    - {fileID: 325711490}
-    - {fileID: 325711489}
-    - {fileID: 325711488}
-    - {fileID: 325711486}
-    - {fileID: 325711487}
-    - {fileID: 1551983615}
-    - {fileID: 4077681695642332, guid: 5a83e8b7832a0ce40a66db9648519591, type: 2}
-    - {fileID: 1307112288854488, guid: 5a83e8b7832a0ce40a66db9648519591, type: 2}
-    - {fileID: 23179144653875536, guid: 5a83e8b7832a0ce40a66db9648519591, type: 2}
-    - {fileID: 65137588584333564, guid: 5a83e8b7832a0ce40a66db9648519591, type: 2}
-    - {fileID: 65288407689011326, guid: 5a83e8b7832a0ce40a66db9648519591, type: 2}
-    - {fileID: 65533985056581808, guid: 5a83e8b7832a0ce40a66db9648519591, type: 2}
-    - {fileID: 54483880655013334, guid: 5a83e8b7832a0ce40a66db9648519591, type: 2}
-    - {fileID: 4300000, guid: 94cd1824dd73aaa4b8af2ca90b2d8e85, type: 3}
-    - {fileID: 2100000, guid: f6cdb5c83051f304ba79da884452a3ca, type: 2}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
+    - {fileID: 0}
   prefabs: []
 --- !u!114 &2138869793
 MonoBehaviour:
