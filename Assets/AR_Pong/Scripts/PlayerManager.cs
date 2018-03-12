@@ -1,11 +1,8 @@
-﻿
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using ExitGames.Client.Photon;
 using Photon;
-using Vuforia;
-using GoogleARCore;
 using TMPro;
+using InControl;
 
 namespace Battlerock
 {
@@ -17,13 +14,24 @@ namespace Battlerock
         public Color playerColor;
         public int playerScore;
 
+        public float movementSpeed = 2f;
+
         public TextMeshPro tmPro;
+        #endregion
+
+        #region Private Variables
+        private PaddleActions Actions;
+        private Rigidbody m_rigidbody;
         #endregion
 
         #region Unity Methods
         // Use this for initialization
-        public void Start()
+        private void Start()
         {
+            m_rigidbody = GetComponent<Rigidbody>();
+
+            InitializeInput();
+
             MultiplayerManager.Instance.localPlayer = PhotonNetwork.player;
 
             for (int i = 0; i < MultiplayerManager.Instance.NumberOfPlayers; i++)
@@ -52,13 +60,13 @@ namespace Battlerock
             PhotonNetwork.player.SetCustomProperties(setPlayerScore);
         }
 
-        //public void Update()
-        //{
-        //    if (photonView.isMine)
-        //    {
-        //        SetPosition();
-        //    }
-        //}
+        public void Update()
+        {
+            if (photonView.isMine)
+            {
+                MovementInput(Actions.Move.Value);
+            }
+        }
 
         /// <summary>
         /// Updates the color across the network so all players can see which color the other players are.
@@ -116,10 +124,15 @@ namespace Battlerock
         /// <summary>
         /// Sets the local player's position to the local player's ARCamera Device location.
         /// </summary>
-        private void SetPosition()
+        /// <param name="x">Direction for movement.</param>
+        private void MovementInput(float x)
         {
-            Vector3 camPos = Camera.main.transform.position;
-            transform.position = new Vector3(camPos.x, camPos.y, camPos.z);
+            Vector3 vel = m_rigidbody.velocity;
+            vel.x = x * movementSpeed;
+
+            Debug.Log("Speed: " + x);
+
+            m_rigidbody.velocity = vel;
         }
 
         /// <summary>
@@ -129,6 +142,18 @@ namespace Battlerock
         private void SetCustomProperty(Hashtable value)
         {
             PhotonNetwork.player.SetCustomProperties(value);
+        }
+
+        private void InitializeInput()
+        {
+            Actions = new PaddleActions();
+            Actions.Left.AddDefaultBinding(InputControlType.DPadLeft);
+            Actions.Right.AddDefaultBinding(InputControlType.DPadRight);
+            Actions.Left.AddDefaultBinding(Key.LeftArrow);
+            Actions.Right.AddDefaultBinding(Key.RightArrow);
+
+            Actions.Left.AddDefaultBinding(InputControlType.LeftStickLeft);
+            Actions.Right.AddDefaultBinding(InputControlType.LeftStickRight);
         }
         #endregion
     }
