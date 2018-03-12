@@ -21,16 +21,17 @@ namespace Battlerock
         // Use this for initialization
         public void Start()
         {
-            if (photonView.isMine)
-            {
-                SetPosition();
-            }
+            MultiplayerManager.Instance.localPlayer = PhotonNetwork.player;
 
             for (int i = 0; i < MultiplayerManager.Instance.NumberOfPlayers; i++)
             {
                 if (PhotonNetwork.playerList[i].ID == photonView.owner.ID)
                 {
                     playerName = PhotonNetwork.playerList[i].NickName;
+                }
+                else
+                {
+                    MultiplayerManager.Instance.otherPlayer = PhotonNetwork.playerList[i];
                 }
             }
 
@@ -47,13 +48,13 @@ namespace Battlerock
             PhotonNetwork.player.SetCustomProperties(setPlayerScore);
         }
 
-        public void Update()
-        {
-            if (photonView.isMine)
-            {
-                SetPosition();
-            }
-        }
+        //public void Update()
+        //{
+        //    if (photonView.isMine)
+        //    {
+        //        SetPosition();
+        //    }
+        //}
 
         /// <summary>
         /// Updates the color across the network so all players can see which color the other players are.

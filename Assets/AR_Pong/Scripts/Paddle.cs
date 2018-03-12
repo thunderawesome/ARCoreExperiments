@@ -8,7 +8,7 @@ namespace Battlerock
         private void Start()
         {
             Physics.IgnoreLayerCollision(9, 9, true);
-            DisableLocalPlayerRenderer();            
+            //DisableLocalPlayerRenderer();            
         }
 
         private void DisableLocalPlayerRenderer()

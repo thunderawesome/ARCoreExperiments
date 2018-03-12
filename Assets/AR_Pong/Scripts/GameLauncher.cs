@@ -225,7 +225,7 @@ namespace Battlerock
             {
                 Debug.Log("We load the 'Room for 1' ");
 
-
+                MultiplayerManager.Instance.localPlayer = PhotonNetwork.player;
 
                 // #Critical
                 // Load the Room Level. 

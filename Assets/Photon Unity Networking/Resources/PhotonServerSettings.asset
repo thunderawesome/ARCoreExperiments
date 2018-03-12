@@ -44,4 +44,5 @@ MonoBehaviour:
   - TaggedPlayer
   - CreateAnchor
   - SetColor
+  - RemoveSpawnPoint
   DisableAutoOpenWizard: 1

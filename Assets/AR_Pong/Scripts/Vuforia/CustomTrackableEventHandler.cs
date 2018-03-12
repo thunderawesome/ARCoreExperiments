@@ -71,10 +71,8 @@ public class CustomTrackableEventHandler : MonoBehaviour,
             {
                 Battlerock.SpawnManager.Instance.SpawnPuck();
             }
-            Battlerock.SpawnManager.Instance.SpawnPlayer();
-        }
-
-
+            Battlerock.SpawnManager.Instance.SpawnPlayer(transform);
+        }        
 
         var rendererComponents = GetComponentsInChildren<Renderer>(true);
         var colliderComponents = GetComponentsInChildren<Collider>(true);
@@ -92,7 +90,6 @@ public class CustomTrackableEventHandler : MonoBehaviour,
         foreach (var component in canvasComponents)
             component.enabled = true;
     }
-
 
     protected virtual void OnTrackingLost()
     {
