@@ -30,7 +30,7 @@ namespace Battlerock
         [Tooltip("The UI Loader Anime")]
         public LoaderAnimation loaderAnimation;
 
-        public LEVEL level = LEVEL.PongPreparation;
+        public LEVEL level = LEVEL.PongGame;
 
         #endregion
 
@@ -69,7 +69,6 @@ namespace Battlerock
 
         #endregion
 
-
         #region Public Methods
         /// <summary>
         /// Loads the next level. Assuming the player already joined a photon room.
@@ -79,7 +78,6 @@ namespace Battlerock
             //SceneManager.LoadScene(level.ToString());
             PhotonNetwork.LoadLevel(level.ToString());
         }
-
 
         /// <summary>
         /// Start the connection process. 
@@ -226,8 +224,6 @@ namespace Battlerock
             if (PhotonNetwork.room.PlayerCount == 1)
             {
                 Debug.Log("We load the 'Room for 1' ");
-
-
 
                 // #Critical
                 // Load the Room Level. 

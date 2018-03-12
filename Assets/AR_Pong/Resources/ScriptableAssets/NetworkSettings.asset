@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Name: NetworkSettings
   m_EditorClassIdentifier: 
   gameVersion: 1
-  maxPlayersPerRoom: 4
-  level: 1
+  maxPlayersPerRoom: 2
+  level: 3

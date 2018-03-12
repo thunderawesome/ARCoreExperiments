@@ -15,6 +15,9 @@ namespace Battlerock
         #region Public Variables
         [Tooltip("Determines what the Game State is currently at.")]
         public GameMode gameMode = GameMode.Lobby;
+
+        public bool isARCoreEnabled = false;
+        public bool isVuforiaEnabled = true;
         #endregion
 
         #region Unity Methods

@@ -9,9 +9,26 @@ namespace Battlerock
         public GameObject player;
         public GameObject goal;
         public GameObject puck;
+
+        public SpawnPoint[] playerSpawnPoints;
+        public Transform puckSpawnPoint;
+
+        public static SpawnManager Instance;
+        #endregion
+
+        #region Private Variables
+        private SpawnPoint m_currentSpawnPoint;
         #endregion
 
         #region Unity Methods
+        /// <summary>
+        /// Unity's built-in method (Called before other methods)
+        /// </summary>
+        private void Awake()
+        {
+            Instance = this;
+        }
+
         /// <summary>
         /// Unity's built-in method (Called right after Awake)
         /// </summary>
@@ -20,34 +37,50 @@ namespace Battlerock
             // in case we started this demo with the wrong scene being active, simply load the menu scene
             if (!PhotonNetwork.connected)
             {
-                UnityEngine.SceneManagement.SceneManager.LoadScene(LEVEL.PongGame.ToString());
+                UnityEngine.SceneManagement.SceneManager.LoadScene(NetworkSettings.Instance.level.ToString());
+
                 yield return null;
             }
 
-
-
-            _GameManager.Instance.gameMode = GameMode.Playing;
-
-#if !UNITY_EDITOR
-            while (MultiplayerManager.Instance.Anchor == null)
-            {
-                yield return null;
-            }
-#endif
+#if UNITY_EDITOR
             SpawnPlayer();
+#endif
         }
         #endregion
 
         #region Public Methods
-        public void SpawnPlayer()
+        public void SpawnPlayer(Transform parent = null)
         {
-            Vector3 position = Vector3.zero;
-            if(MultiplayerManager.Instance.Anchor != null)
-            {
-                position = MultiplayerManager.Instance.Anchor.transform.position;
-            }
+            ClosestSpawnPointCheck();
 
-            PhotonNetwork.Instantiate(player.name, position, Quaternion.identity, 0);
+            GameObject obj = PhotonNetwork.Instantiate(player.name, m_currentSpawnPoint.location.position, m_currentSpawnPoint.location.rotation, 0);
+            obj.transform.parent = parent;
+            _GameManager.Instance.gameMode = GameMode.Preparation;
+            MultiplayerManager.Instance.isReady = true;
+        }
+
+        private void ClosestSpawnPointCheck()
+        {
+            //float minDistance = Mathf.Infinity;
+            if (MultiplayerManager.Instance.LocalPlayer.IsMasterClient)
+            {
+                m_currentSpawnPoint = playerSpawnPoints[0];
+            }
+            else
+            {
+                m_currentSpawnPoint = playerSpawnPoints[1];
+            }
+            //for (int i = 0; i < playerSpawnPoints.Length; i++)
+            //{
+            //    if (m_currentSpawnPoint.isOccupied == true || m_currentSpawnPoint == null) continue;
+            //    float distance = Vector3.Distance(Camera.main.transform.position, playerSpawnPoints[i].location.position);
+            //    if (distance < minDistance)
+            //    {
+            //        m_currentSpawnPoint = playerSpawnPoints[i];
+            //        minDistance = distance;
+            //    }
+            //}
+            m_currentSpawnPoint.isOccupied = true;
         }
 
         public void SpawnGoal()
@@ -55,9 +88,11 @@ namespace Battlerock
 
         }
 
-        public void SpawnPuck()
+        public void SpawnPuck(Transform parent = null)
         {
-
+            GameObject obj = PhotonNetwork.Instantiate(puck.name, puckSpawnPoint.position, Quaternion.identity, 0);
+            obj.transform.parent = parent;
+            _GameManager.Instance.gameMode = GameMode.Playing;
         }
         #endregion
     }

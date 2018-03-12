@@ -5,7 +5,8 @@ namespace Battlerock
     public enum LEVEL
     {
         PongLauncher,
-        PongPreparation,
+        PongGameVuforia,
+        PongGameARCore,
         PongGame
     }
 

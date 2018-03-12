@@ -8,6 +8,7 @@ TagManager:
   - Bobber
   - EncyclopediaSlot
   - Text
+  - UI
   layers:
   - Default
   - TransparentFX
@@ -21,7 +22,7 @@ TagManager:
   - Player
   - Interactable
   - Goal
-  - 
+  - InControl
   - 
   - 
   - 
