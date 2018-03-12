@@ -45,4 +45,5 @@ MonoBehaviour:
   - CreateAnchor
   - SetColor
   - RemoveSpawnPoint
+  - SetName
   DisableAutoOpenWizard: 1

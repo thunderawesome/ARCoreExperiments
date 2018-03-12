@@ -5,6 +5,7 @@ using ExitGames.Client.Photon;
 using Photon;
 using Vuforia;
 using GoogleARCore;
+using TMPro;
 
 namespace Battlerock
 {
@@ -15,6 +16,8 @@ namespace Battlerock
         public string playerName;
         public Color playerColor;
         public int playerScore;
+
+        public TextMeshPro tmPro;
         #endregion
 
         #region Unity Methods
@@ -38,6 +41,7 @@ namespace Battlerock
             if (photonView.isMine == true)
             {
                 playerColor = ES3.Load<Color>(PhotonNetwork.playerName);
+                photonView.RPC("SetName", PhotonTargets.AllBuffered, playerName);
                 photonView.RPC("SetColor", PhotonTargets.AllBuffered, playerColor.r, playerColor.g, playerColor.b);
             }
 
@@ -70,6 +74,18 @@ namespace Battlerock
             {
                 rend.material.color = new Color(r, g, b, 1);
             }
+
+            tmPro.faceColor = new Color(r, g, b, 1);
+        }
+
+        /// <summary>
+        /// Updates the player's name so other players can see it.
+        /// </summary>
+        /// <param name="name"></param>
+        [PunRPC]
+        public void SetName(string name)
+        {
+            tmPro.text = name;
         }
         #endregion
 
