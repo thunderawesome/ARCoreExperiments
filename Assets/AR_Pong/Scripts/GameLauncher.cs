@@ -225,8 +225,6 @@ namespace Battlerock
             {
                 Debug.Log("We load the 'Room for 1' ");
 
-                MultiplayerManager.Instance.localPlayer = PhotonNetwork.player;
-
                 // #Critical
                 // Load the Room Level. 
                 PhotonNetwork.LoadLevel(level.ToString());
@@ -234,7 +232,6 @@ namespace Battlerock
             }
             else
             {
-                MultiplayerManager.Instance.otherPlayer = PhotonNetwork.playerList[1];
                 PhotonNetwork.LoadLevel(level.ToString());
             }
         }

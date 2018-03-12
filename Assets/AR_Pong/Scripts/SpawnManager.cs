@@ -62,7 +62,7 @@ namespace Battlerock
         private void ClosestSpawnPointCheck()
         {
             //float minDistance = Mathf.Infinity;
-            if (MultiplayerManager.Instance.localPlayer.IsMasterClient)
+            if (MultiplayerManager.Instance.LocalPlayer.IsMasterClient)
             {
                 m_currentSpawnPoint = playerSpawnPoints[0];
             }

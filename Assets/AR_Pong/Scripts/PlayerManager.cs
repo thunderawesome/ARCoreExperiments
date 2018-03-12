@@ -30,8 +30,6 @@ namespace Battlerock
         {
             m_rigidbody = GetComponent<Rigidbody>();
 
-            MultiplayerManager.Instance.localPlayer = PhotonNetwork.player;
-
             InitializeInput();
 
 
@@ -40,10 +38,6 @@ namespace Battlerock
                 if (PhotonNetwork.playerList[i].ID == photonView.owner.ID)
                 {
                     playerName = PhotonNetwork.playerList[i].NickName;
-                }
-                else
-                {
-                    MultiplayerManager.Instance.otherPlayer = PhotonNetwork.playerList[i];
                 }
             }
 
@@ -153,7 +147,7 @@ namespace Battlerock
             Actions.Left.AddDefaultBinding(Key.LeftArrow);
             Actions.Right.AddDefaultBinding(Key.RightArrow);
 
-            if (MultiplayerManager.Instance.localPlayer.IsMasterClient == true)
+            if (MultiplayerManager.Instance.LocalPlayer.IsMasterClient == true)
             {
                 Actions.Left.AddDefaultBinding(InputControlType.LeftStickRight);
                 Actions.Right.AddDefaultBinding(InputControlType.LeftStickLeft);

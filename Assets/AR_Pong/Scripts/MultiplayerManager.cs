@@ -9,10 +9,47 @@ namespace Battlerock
         #region Public Variables
         public static MultiplayerManager Instance;
 
-        public bool isReady = false;
+        public bool isReady = false;       
 
-        public PhotonPlayer localPlayer;
-        public PhotonPlayer otherPlayer;
+        public PhotonPlayer LocalPlayer
+        {
+            get
+            {
+                if (m_localPlayer == null)
+                {
+                    m_localPlayer = PhotonNetwork.player;
+                    return m_localPlayer;
+                }
+                else
+                {
+                    return m_localPlayer;
+                }
+            }
+        }
+
+        public PhotonPlayer OtherPlayer
+        {
+            get
+            {
+                if(m_otherPlayer == null)
+                {
+                    if(PhotonNetwork.playerList.Length > 1)
+                    {
+                        m_otherPlayer = PhotonNetwork.playerList[1];
+                        return m_otherPlayer;
+                    }
+                    else
+                    {
+                        Debug.LogError("No OTHER player has joined the server yet.");
+                        return null;
+                    }
+                }
+                else
+                {
+                    return m_otherPlayer;
+                }
+            }
+        }
 
         public int NumberOfPlayers
         {
@@ -21,6 +58,8 @@ namespace Battlerock
         #endregion
 
         #region Private Variables
+        private PhotonPlayer m_localPlayer;
+        private PhotonPlayer m_otherPlayer;
         #endregion
 
         #region Unity Methods

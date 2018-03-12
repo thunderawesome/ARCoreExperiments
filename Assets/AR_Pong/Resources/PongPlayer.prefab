@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 120901713966741768}
   - component: {fileID: 114750308856818950}
   - component: {fileID: 136217545709478326}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Line
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -37,7 +37,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4314392954086958}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: startPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -59,7 +59,7 @@ GameObject:
   - component: {fileID: 136324998294451166}
   - component: {fileID: 54309393373519276}
   - component: {fileID: 114386135072554406}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: CPaddle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -74,7 +74,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4081539094569682}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: endPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,6 +93,7 @@ GameObject:
   - component: {fileID: 23262226243844730}
   - component: {fileID: 222530571908425334}
   - component: {fileID: 114674284584283854}
+  - component: {fileID: 114613499396863702}
   m_Layer: 9
   m_Name: Name
   m_TagString: Untagged
@@ -111,6 +112,7 @@ GameObject:
   - component: {fileID: 114819913872427126}
   - component: {fileID: 114766960874250262}
   - component: {fileID: 54066581929580670}
+  - component: {fileID: 65160891524445910}
   m_Layer: 9
   m_Name: PongPlayer
   m_TagString: Untagged
@@ -300,6 +302,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &65160891524445910
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1971451078693796}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.6, y: 0.25, z: 0.5}
+  m_Center: {x: 0, y: 0, z: 0.1}
 --- !u!114 &114386135072554406
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -311,6 +325,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48f89612f4191c94e849bdcd66675814, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114613499396863702
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1735730584591034}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f430d2b70e50074d834d03257fa1e9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Camera: {fileID: 0}
 --- !u!114 &114674284584283854
 MonoBehaviour:
   m_ObjectHideFlags: 1
