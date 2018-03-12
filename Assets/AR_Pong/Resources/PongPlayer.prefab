@@ -21,8 +21,6 @@ GameObject:
   - component: {fileID: 4107521325650796}
   - component: {fileID: 33526677103671666}
   - component: {fileID: 23120777243949412}
-  - component: {fileID: 136556361408670072}
-  - component: {fileID: 136113781200754180}
   m_Layer: 0
   m_Name: CPaddle1
   m_TagString: Untagged
@@ -111,6 +109,9 @@ GameObject:
   - component: {fileID: 114766960874250262}
   - component: {fileID: 114128731806225956}
   - component: {fileID: 114601957826352792}
+  - component: {fileID: 136776818773078346}
+  - component: {fileID: 136113781200754180}
+  - component: {fileID: 136428962255504806}
   m_Layer: 10
   m_Name: PongPlayer
   m_TagString: Untagged
@@ -645,7 +646,7 @@ LineRenderer:
   m_Loop: 0
 --- !u!136 &136113781200754180
 CapsuleCollider:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1971451078693796}
@@ -661,7 +662,7 @@ CapsuleCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1030975942981582}
+  m_GameObject: {fileID: 1547191300017256}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
@@ -671,7 +672,7 @@ CapsuleCollider:
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!136 &136428962255504806
 CapsuleCollider:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1971451078693796}
@@ -684,7 +685,7 @@ CapsuleCollider:
   m_Center: {x: -0.7, y: 0, z: 0.14}
 --- !u!136 &136776818773078346
 CapsuleCollider:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1971451078693796}
