@@ -11,6 +11,8 @@ TagManager:
   - UI
   - P1_Goal
   - P2_Goal
+  - LocalText
+  - RemoteText
   layers:
   - Default
   - TransparentFX

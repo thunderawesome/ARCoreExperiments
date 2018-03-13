@@ -12,8 +12,6 @@
         #region Private Variables
         private Rigidbody m_rigidbody;
         private Color m_color;
-
-        Vector3 m_oldVelocity;
         #endregion
 
         #region Unity Methods
@@ -34,22 +32,29 @@
                     // myRigidbody.velocity = oldVel + cp.normal*2.0f*oldVel.magnitude;
 
                     // calculate with Vector3.Reflect
-                    m_rigidbody.velocity = Vector3.Reflect(m_oldVelocity, cp.normal);
+                    m_rigidbody.velocity = Vector3.Reflect(m_rigidbody.velocity, cp.normal);
 
                     // bumper effect to speed up ball
                     m_rigidbody.velocity += cp.normal * speed;
 
-                    m_color = collision.gameObject.GetComponent<PlayerManager>().playerColor;
-                    photonView.RPC("SetColor", PhotonTargets.AllBuffered, m_color.r, m_color.g, m_color.b);
+                    //m_color = collision.gameObject.GetComponent<PlayerManager>().playerColor;
+                    //Vector3 color = MultiplayerManager.Instance.LocalPlayer.GetColor();
+
+                    //foreach (Renderer rend in GetComponentsInChildren<Renderer>())
+                    //{
+                    //    rend.material.color = new Color(color.x, color.y, color.z, 1);
+                    //}
+                    //photonView.RPC("SetColor", PhotonTargets.AllBuffered, m_color.r, m_color.g, m_color.b);
                 }
-                if (collision.gameObject.tag == "P1_Goal")
-                {
-                    PhotonNetwork.playerList[0].AddScore(1);
-                }
-                else if (collision.gameObject.tag == "P2_Goal")
-                {
-                    PhotonNetwork.playerList[1].AddScore(1);
-                }
+            }
+
+            if (collision.gameObject.tag == "P1_Goal")
+            {
+                PhotonNetwork.playerList[1].AddScore(1);
+            }
+            else if (collision.gameObject.tag == "P2_Goal")
+            {
+                PhotonNetwork.playerList[0].AddScore(1);
             }
         }
 

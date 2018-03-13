@@ -43,6 +43,8 @@ namespace Battlerock
             if (photonView.isMine == true)
             {
                 playerColor = ES3.Load<Color>(PhotonNetwork.playerName);
+                MultiplayerManager.Instance.LocalPlayer.SetColor(new Vector3(playerColor.r, playerColor.g, playerColor.b));
+
                 photonView.RPC("SetName", PhotonTargets.AllBuffered, playerName);
                 photonView.RPC("SetColor", PhotonTargets.AllBuffered, playerColor.r, playerColor.g, playerColor.b);
             }
