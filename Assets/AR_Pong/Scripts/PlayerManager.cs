@@ -12,7 +12,6 @@ namespace Battlerock
         #region Public Variables
         public string playerName;
         public Color playerColor;
-        public int playerScore;
 
         public float movementSpeed = 2f;
 
@@ -47,12 +46,6 @@ namespace Battlerock
                 photonView.RPC("SetName", PhotonTargets.AllBuffered, playerName);
                 photonView.RPC("SetColor", PhotonTargets.AllBuffered, playerColor.r, playerColor.g, playerColor.b);
             }
-
-
-            //reset players score to zero
-            playerScore = 0;
-            Hashtable setPlayerScore = new Hashtable() { { "PlayerScore", playerScore } };
-            PhotonNetwork.player.SetCustomProperties(setPlayerScore);
         }
 
         public void Update()
@@ -93,26 +86,7 @@ namespace Battlerock
         #endregion
 
         #region Public Methods
-        /// <summary>
-        /// up the players score when they get the puck in the opponents goal
-        /// </summary>
-        public void AddScore()
-        {
-            playerScore++;
-            SetCustomProperty(new Hashtable() { { "PlayerScore", playerScore } });
-        }
-
-        /// <summary>
-        /// Reduce the players score for when they score on themselves
-        /// </summary>
-        public void ReduceScore()
-        {
-            if (playerScore > 0)
-            {
-                playerScore--;
-                SetCustomProperty(new Hashtable() { { "PlayerScore", playerScore } });
-            }
-        }
+     
         #endregion
 
         #region Private Methods
@@ -124,8 +98,6 @@ namespace Battlerock
         {
             Vector3 vel = m_rigidbody.velocity;
             vel.x = x * movementSpeed;
-
-            Debug.Log("Speed: " + x);
 
             m_rigidbody.velocity = vel;
         }

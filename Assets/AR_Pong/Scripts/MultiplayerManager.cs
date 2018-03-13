@@ -35,7 +35,7 @@ namespace Battlerock
                 {
                     if(PhotonNetwork.playerList.Length > 1)
                     {
-                        m_otherPlayer = PhotonNetwork.playerList[1];
+                        m_otherPlayer = PhotonNetwork.player.GetNext();
                         return m_otherPlayer;
                     }
                     else
@@ -55,6 +55,9 @@ namespace Battlerock
         {
             get { return PhotonNetwork.playerList.Length; }
         }
+
+        public UnityEngine.UI.Text LocalPlayerText;
+        public UnityEngine.UI.Text RemotePlayerText;
         #endregion
 
         #region Private Variables
@@ -84,6 +87,22 @@ namespace Battlerock
         {
             Debug.LogError(GetType() + ":Disconnected");
             SceneManager.LoadScene(LEVEL.PongLauncher.ToString());
+        }
+
+        private void UpdatePlayerTexts()
+        {
+
+            if (m_otherPlayer != null)
+            {
+                // should be this format: "name        00"
+                this.RemotePlayerText.text = m_otherPlayer.NickName + "        " + m_otherPlayer.GetScore().ToString("D2");
+            }
+
+            if (m_localPlayer != null)
+            {
+                // should be this format: "YOU   00"
+                this.LocalPlayerText.text = "YOU   " + m_localPlayer.GetScore().ToString("D2");
+            }
         }
         #endregion
     }

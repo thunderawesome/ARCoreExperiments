@@ -25,22 +25,34 @@
 
         private void OnCollisionEnter(Collision collision)
         {
-            if (collision.gameObject.tag == "Player")
+            if (photonView.isMine == true)
             {
-                ContactPoint cp = collision.contacts[0];
-                // calculate with addition of normal vector
-                // myRigidbody.velocity = oldVel + cp.normal*2.0f*oldVel.magnitude;
+                if (collision.gameObject.tag == "Player")
+                {
+                    ContactPoint cp = collision.contacts[0];
+                    // calculate with addition of normal vector
+                    // myRigidbody.velocity = oldVel + cp.normal*2.0f*oldVel.magnitude;
 
-                // calculate with Vector3.Reflect
-                m_rigidbody.velocity = Vector3.Reflect(m_oldVelocity, cp.normal);
+                    // calculate with Vector3.Reflect
+                    m_rigidbody.velocity = Vector3.Reflect(m_oldVelocity, cp.normal);
 
-                // bumper effect to speed up ball
-                m_rigidbody.velocity += cp.normal * 2.0f;
+                    // bumper effect to speed up ball
+                    m_rigidbody.velocity += cp.normal * speed;
 
-                m_color = collision.gameObject.GetComponent<PlayerManager>().playerColor;
-                photonView.RPC("SetColor", PhotonTargets.AllBuffered, m_color.r, m_color.g, m_color.b);
+                    m_color = collision.gameObject.GetComponent<PlayerManager>().playerColor;
+                    photonView.RPC("SetColor", PhotonTargets.AllBuffered, m_color.r, m_color.g, m_color.b);
+                }
+                if (collision.gameObject.tag == "P1_Goal")
+                {
+                    PhotonNetwork.playerList[0].AddScore(1);
+                }
+                else if (collision.gameObject.tag == "P2_Goal")
+                {
+                    PhotonNetwork.playerList[1].AddScore(1);
+                }
             }
         }
+
         #endregion
 
         #region Private Methods

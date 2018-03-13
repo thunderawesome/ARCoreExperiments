@@ -9,6 +9,8 @@ TagManager:
   - EncyclopediaSlot
   - Text
   - UI
+  - P1_Goal
+  - P2_Goal
   layers:
   - Default
   - TransparentFX
