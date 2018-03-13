@@ -27,6 +27,8 @@ public static class ScoreExtensions
         score[PunPlayerScores.PlayerScoreProp] = current;
 
         player.SetCustomProperties(score);  // this locally sets the score and will sync it in-game asap.
+
+        Debug.Log(player.NickName + " scored " + scoreToAddToCurrent + " point.");
     }
 
     public static int GetScore(this PhotonPlayer player)

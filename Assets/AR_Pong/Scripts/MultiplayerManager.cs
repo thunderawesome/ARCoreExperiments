@@ -9,7 +9,7 @@ namespace Battlerock
         #region Public Variables
         public static MultiplayerManager Instance;
 
-        public bool isReady = false;       
+        public bool isReady = false;
 
         public PhotonPlayer LocalPlayer
         {
@@ -31,9 +31,9 @@ namespace Battlerock
         {
             get
             {
-                if(m_otherPlayer == null)
+                if (m_otherPlayer == null)
                 {
-                    if(PhotonNetwork.playerList.Length > 1)
+                    if (PhotonNetwork.playerList.Length > 1)
                     {
                         m_otherPlayer = PhotonNetwork.player.GetNext();
                         return m_otherPlayer;
@@ -73,6 +73,11 @@ namespace Battlerock
         {
             Instance = this;
         }
+
+        private void Update()
+        {
+            UpdatePlayerTexts();
+        }
         #endregion
 
         #region Public Methods
@@ -91,18 +96,41 @@ namespace Battlerock
 
         private void UpdatePlayerTexts()
         {
+            if (SceneManager.GetActiveScene().buildIndex != (int)NetworkSettings.Instance.level) return;
 
-            if (m_otherPlayer != null)
-            {
-                // should be this format: "name        00"
-                this.RemotePlayerText.text = m_otherPlayer.NickName + "        " + m_otherPlayer.GetScore().ToString("D2");
-            }
+            m_otherPlayer = PhotonNetwork.player.GetNext();
+            m_localPlayer = PhotonNetwork.player;
 
             if (m_localPlayer != null)
             {
+                if (LocalPlayerText == null)
+                {
+                    LocalPlayerText = GameObject.FindWithTag("LocalText").GetComponent<UnityEngine.UI.Text>();
+                    LocalPlayerText.color = new Color(m_localPlayer.GetColor().x, m_localPlayer.GetColor().y, m_localPlayer.GetColor().z);
+
+                    m_localPlayer.SetScore(0);                    
+                }
+
                 // should be this format: "YOU   00"
-                this.LocalPlayerText.text = "YOU   " + m_localPlayer.GetScore().ToString("D2");
+                this.LocalPlayerText.text = m_localPlayer.NickName + " | " + m_localPlayer.GetScore().ToString() + "|";
+
             }
+
+            if (m_otherPlayer != null)
+            {
+                if (RemotePlayerText == null)
+                {
+                    RemotePlayerText = GameObject.FindWithTag("RemoteText").GetComponent<UnityEngine.UI.Text>();
+
+                    RemotePlayerText.color = new Color(m_otherPlayer.GetColor().x, m_otherPlayer.GetColor().y, m_otherPlayer.GetColor().z);
+                    m_otherPlayer.SetScore(0);
+                }
+
+                // should be this format: "name        00"
+                this.RemotePlayerText.text = "| " + m_otherPlayer.GetScore().ToString() + " | " + m_otherPlayer.NickName;
+            }
+
+
         }
         #endregion
     }

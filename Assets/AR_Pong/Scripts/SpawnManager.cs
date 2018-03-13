@@ -68,6 +68,7 @@ namespace Battlerock
             }
             else
             {
+
                 m_currentSpawnPoint = playerSpawnPoints[1];
             }
             //for (int i = 0; i < playerSpawnPoints.Length; i++)
