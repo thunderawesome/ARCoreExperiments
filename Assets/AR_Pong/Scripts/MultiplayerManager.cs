@@ -116,7 +116,7 @@ namespace Battlerock
                 }
 
                 // should be this format: "YOU   00"
-                this.LocalPlayerText.text = m_localPlayer.NickName + " | " + m_localPlayer.GetScore().ToString() + "|";
+                this.LocalPlayerText.text = m_localPlayer.NickName + " | " + m_localPlayer.GetScore().ToString() + "| ";
 
             }
 
