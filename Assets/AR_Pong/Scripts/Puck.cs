@@ -11,7 +11,6 @@
 
         #region Private Variables
         private Rigidbody m_rigidbody;
-        private Color m_color;
         #endregion
 
         #region Unity Methods
@@ -25,23 +24,6 @@
         {
             if (photonView.isMine == true)
             {
-                if (collision.gameObject.tag == "Player")
-                {
-                    ContactPoint cp = collision.contacts[0];
-                    // calculate with addition of normal vector
-                    // myRigidbody.velocity = oldVel + cp.normal*2.0f*oldVel.magnitude;
-
-                    // calculate with Vector3.Reflect
-                    m_rigidbody.velocity = Vector3.Reflect(m_rigidbody.velocity, cp.normal);
-
-                    // bumper effect to speed up ball
-                    m_rigidbody.velocity += cp.normal * speed;
-                    Vector3 color = MultiplayerManager.Instance.LocalPlayer.GetColor();
-                    m_color = new Color(color.x, color.y, color.z, 1);
-
-                    photonView.RPC("SetColor", PhotonTargets.AllBuffered, m_color.r, m_color.g, m_color.b);
-                }
-
                 if (collision.gameObject.tag == "P1_Goal")
                 {
                     PhotonNetwork.playerList[1].AddScore(1);
@@ -50,7 +32,24 @@
                 {
                     PhotonNetwork.playerList[0].AddScore(1);
                 }
-            }            
+            }
+
+            if (collision.gameObject.GetComponent<PlayerManager>().photonView.isMine == true)
+            {
+                if (collision.gameObject.tag == "Player")
+                {
+                    ContactPoint cp = collision.contacts[0];
+
+                    // calculate with Vector3.Reflect
+                    m_rigidbody.velocity = Vector3.Reflect(m_rigidbody.velocity, cp.normal);
+
+                    // bumper effect to speed up ball
+                    m_rigidbody.velocity += cp.normal * speed;
+
+                    Vector3 color = collision.gameObject.GetComponent<PlayerManager>().myPlayer.GetColor();
+                    photonView.RPC("SetColor", PhotonTargets.AllBuffered, color.x, color.y, color.z);
+                }
+            }
         }
 
         #endregion
