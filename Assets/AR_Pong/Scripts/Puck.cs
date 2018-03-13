@@ -36,26 +36,21 @@
 
                     // bumper effect to speed up ball
                     m_rigidbody.velocity += cp.normal * speed;
+                    Vector3 color = MultiplayerManager.Instance.LocalPlayer.GetColor();
+                    m_color = new Color(color.x, color.y, color.z, 1);
 
-                    //m_color = collision.gameObject.GetComponent<PlayerManager>().playerColor;
-                    //Vector3 color = MultiplayerManager.Instance.LocalPlayer.GetColor();
-
-                    //foreach (Renderer rend in GetComponentsInChildren<Renderer>())
-                    //{
-                    //    rend.material.color = new Color(color.x, color.y, color.z, 1);
-                    //}
-                    //photonView.RPC("SetColor", PhotonTargets.AllBuffered, m_color.r, m_color.g, m_color.b);
+                    photonView.RPC("SetColor", PhotonTargets.AllBuffered, m_color.r, m_color.g, m_color.b);
                 }
-            }
 
-            if (collision.gameObject.tag == "P1_Goal")
-            {
-                PhotonNetwork.playerList[1].AddScore(1);
-            }
-            else if (collision.gameObject.tag == "P2_Goal")
-            {
-                PhotonNetwork.playerList[0].AddScore(1);
-            }
+                if (collision.gameObject.tag == "P1_Goal")
+                {
+                    PhotonNetwork.playerList[1].AddScore(1);
+                }
+                else if (collision.gameObject.tag == "P2_Goal")
+                {
+                    PhotonNetwork.playerList[0].AddScore(1);
+                }
+            }            
         }
 
         #endregion
