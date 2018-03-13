@@ -13,7 +13,8 @@ namespace Battlerock
         public string playerName;
         public Color playerColor;
 
-        public float movementSpeed = 2f;
+        public float movementSpeedX = 2f;
+        public float movementSpeedZ = 2f;
 
         public TextMeshPro tmPro;
         #endregion
@@ -54,7 +55,7 @@ namespace Battlerock
         {
             if (photonView.isMine)
             {
-                MovementInput(Actions.Move.Value);
+                MovementInput(Actions.Move2.Value);
             }
         }
 
@@ -88,7 +89,7 @@ namespace Battlerock
         #endregion
 
         #region Public Methods
-     
+
         #endregion
 
         #region Private Methods
@@ -96,11 +97,11 @@ namespace Battlerock
         /// Sets the local player's position to the local player's ARCamera Device location.
         /// </summary>
         /// <param name="x">Direction for movement.</param>
-        private void MovementInput(float x)
+        private void MovementInput(Vector2 xz)
         {
             Vector3 vel = m_rigidbody.velocity;
-            vel.x = x * movementSpeed;
-
+            vel.x = xz.x * movementSpeedX;
+            vel.z = xz.y * movementSpeedZ;
             m_rigidbody.velocity = vel;
         }
 
@@ -118,18 +119,34 @@ namespace Battlerock
             Actions = new PaddleActions();
             Actions.Left.AddDefaultBinding(InputControlType.DPadLeft);
             Actions.Right.AddDefaultBinding(InputControlType.DPadRight);
-            Actions.Left.AddDefaultBinding(Key.LeftArrow);
-            Actions.Right.AddDefaultBinding(Key.RightArrow);
+            Actions.Forward.AddDefaultBinding(InputControlType.DPadUp);
+            Actions.Backward.AddDefaultBinding(InputControlType.DPadDown);
 
             if (MultiplayerManager.Instance.LocalPlayer.IsMasterClient == true)
             {
+                //analog stick
                 Actions.Left.AddDefaultBinding(InputControlType.LeftStickRight);
                 Actions.Right.AddDefaultBinding(InputControlType.LeftStickLeft);
+                Actions.Forward.AddDefaultBinding(InputControlType.LeftStickUp);
+                Actions.Backward.AddDefaultBinding(InputControlType.LeftStickDown);
+                //keyboard
+                Actions.Left.AddDefaultBinding(Key.RightArrow);
+                Actions.Right.AddDefaultBinding(Key.LeftArrow);
+                Actions.Forward.AddDefaultBinding(Key.UpArrow);
+                Actions.Backward.AddDefaultBinding(Key.DownArrow);
             }
             else
             {
+                //analog stick
                 Actions.Left.AddDefaultBinding(InputControlType.LeftStickLeft);
                 Actions.Right.AddDefaultBinding(InputControlType.LeftStickRight);
+                Actions.Forward.AddDefaultBinding(InputControlType.LeftStickDown);
+                Actions.Backward.AddDefaultBinding(InputControlType.LeftStickUp);
+                //keyboard
+                Actions.Left.AddDefaultBinding(Key.LeftArrow);
+                Actions.Right.AddDefaultBinding(Key.RightArrow);
+                Actions.Forward.AddDefaultBinding(Key.DownArrow);
+                Actions.Backward.AddDefaultBinding(Key.UpArrow);
             }
         }
         #endregion
