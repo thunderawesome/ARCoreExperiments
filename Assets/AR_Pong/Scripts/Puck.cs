@@ -30,18 +30,22 @@
                 m_rigidbody.velocity = Vector3.Reflect(m_rigidbody.velocity, cp.normal);
 
                 // bumper effect to speed up ball
-                m_rigidbody.velocity += cp.normal * speed;
+                //[Adam] this looks like it should work, however I have a gut feeling that it is driving the puck into the player with more speed
+                //m_rigidbody.velocity += cp.normal * speed;
             }
 
             if (photonView.isMine == true)
             {
+                //the scoring player gains a point while the other loses that point
                 if (collision.gameObject.tag == "P1_Goal")
                 {
                     PhotonNetwork.playerList[1].AddScore(1);
+                    PhotonNetwork.playerList[0].AddScore(-1);
                 }
                 else if (collision.gameObject.tag == "P2_Goal")
                 {
                     PhotonNetwork.playerList[0].AddScore(1);
+                    PhotonNetwork.playerList[1].AddScore(-1);
                 }
             }
 
