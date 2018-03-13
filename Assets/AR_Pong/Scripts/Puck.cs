@@ -22,6 +22,17 @@
 
         private void OnCollisionEnter(Collision collision)
         {
+            if (collision.gameObject.tag == "Player")
+            {
+                ContactPoint cp = collision.contacts[0];
+
+                // calculate with Vector3.Reflect
+                m_rigidbody.velocity = Vector3.Reflect(m_rigidbody.velocity, cp.normal);
+
+                // bumper effect to speed up ball
+                m_rigidbody.velocity += cp.normal * speed;
+            }
+
             if (photonView.isMine == true)
             {
                 if (collision.gameObject.tag == "P1_Goal")
@@ -34,18 +45,10 @@
                 }
             }
 
-            if (collision.gameObject.GetComponent<PlayerManager>().photonView.isMine == true)
+            if (collision.gameObject.tag == "Player")
             {
-                if (collision.gameObject.tag == "Player")
+                if (collision.gameObject.GetComponent<PlayerManager>().photonView.isMine == true)
                 {
-                    ContactPoint cp = collision.contacts[0];
-
-                    // calculate with Vector3.Reflect
-                    m_rigidbody.velocity = Vector3.Reflect(m_rigidbody.velocity, cp.normal);
-
-                    // bumper effect to speed up ball
-                    m_rigidbody.velocity += cp.normal * speed;
-
                     Vector3 color = collision.gameObject.GetComponent<PlayerManager>().myPlayer.GetColor();
                     photonView.RPC("SetColor", PhotonTargets.AllBuffered, color.x, color.y, color.z);
                 }
