@@ -513,7 +513,7 @@ MonoBehaviour:
   playerName: 
   playerColor: {r: 0, g: 0, b: 0, a: 0}
   movementSpeedX: 6
-  movementSpeedZ: 3
+  movementSpeedZ: 4.5
   tmPro: {fileID: 114674284584283854}
 --- !u!120 &120806000757478918
 LineRenderer:
