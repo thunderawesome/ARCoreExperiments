@@ -95,7 +95,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1845193307516834}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 9.665355, y: -3, z: 0}
+  m_LocalPosition: {x: 5.495902, y: -3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4874210203848300}
@@ -202,7 +202,7 @@ MonoBehaviour:
     y: 0
     width: 100
     height: 100
-  target: 2
+  target: 1
   snapAngles: 0
   lockToAxis: 0
   lowerDeadZone: 0.1
@@ -232,9 +232,9 @@ MonoBehaviour:
   resetDuration: 0.1
   ring:
     idleSprite: {fileID: 0}
-    busySprite: {fileID: 0}
+    busySprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
     idleColor: {r: 1, g: 1, b: 1, a: 0.5}
-    busyColor: {r: 1, g: 1, b: 1, a: 1}
+    busyColor: {r: 0.3602941, g: 0.3602941, b: 0.3602941, a: 0.5}
     shape: 0
     sizeUnitType: 0
     size: {x: 10, y: 10}
