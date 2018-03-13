@@ -13,6 +13,8 @@ namespace Battlerock
         public string playerName;
         public Color playerColor;
 
+        public PhotonPlayer myPlayer;
+
         public float movementSpeed = 2f;
 
         public TextMeshPro tmPro;
@@ -27,6 +29,8 @@ namespace Battlerock
         // Use this for initialization
         private void Start()
         {
+            myPlayer = MultiplayerManager.Instance.LocalPlayer;
+
             m_rigidbody = GetComponent<Rigidbody>();
 
             InitializeInput();

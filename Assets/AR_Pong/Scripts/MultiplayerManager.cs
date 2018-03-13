@@ -58,6 +58,9 @@ namespace Battlerock
 
         public UnityEngine.UI.Text LocalPlayerText;
         public UnityEngine.UI.Text RemotePlayerText;
+
+        public Color localColor;
+        public Color otherColor;
         #endregion
 
         #region Private Variables
@@ -108,7 +111,8 @@ namespace Battlerock
                     LocalPlayerText = GameObject.FindWithTag("LocalText").GetComponent<UnityEngine.UI.Text>();
                     LocalPlayerText.color = new Color(m_localPlayer.GetColor().x, m_localPlayer.GetColor().y, m_localPlayer.GetColor().z);
 
-                    m_localPlayer.SetScore(0);                    
+                    m_localPlayer.SetScore(0);
+                    localColor = new Color(m_localPlayer.GetColor().x, m_localPlayer.GetColor().y, m_localPlayer.GetColor().z);
                 }
 
                 // should be this format: "YOU   00"
@@ -124,6 +128,7 @@ namespace Battlerock
 
                     RemotePlayerText.color = new Color(m_otherPlayer.GetColor().x, m_otherPlayer.GetColor().y, m_otherPlayer.GetColor().z);
                     m_otherPlayer.SetScore(0);
+                    otherColor = new Color(m_otherPlayer.GetColor().x, m_otherPlayer.GetColor().y, m_otherPlayer.GetColor().z);
                 }
 
                 // should be this format: "name        00"
